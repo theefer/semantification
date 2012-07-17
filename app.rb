@@ -15,6 +15,10 @@ get '/' do
   template.result(:who => "You")
 end
 
+get '/demo-page' do
+  read_template('test').result
+end
+
 get '/story/:id' do
   id = params[:id]
   # STORY
