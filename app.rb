@@ -186,9 +186,24 @@ end
 
 
 
-def read_template(name)
-  template = File.read("templates/#{name}.erb")
-  Erubis::Eruby.new(template)
+
+class Page
+  def initialize(content_name)
+    @page_template = read_template('page')
+    @content_template = read_template("content/#{content_name}")
+  end
+
+  def render(data)
+    content = @content_template.result(data)
+    @page_template.result(:content => content)
+  end
+
+  private
+
+  def read_template(name)
+    template = File.read("templates/#{name}.erb")
+    Erubis::Eruby.new(template)
+  end
 end
 
 
@@ -217,15 +232,8 @@ USER = 'you'
 
 get '/' do
   # HOMEPAGE
-  template = read_template('welcome')
-  template.result(:who => "You")
-end
-
-get '/test' do
-  article = Article.get_by_id('foo-bar')
-  p article
-
-  read_template('test').result
+  # template = read_template('welcome')
+  # template.result(:who => "You")
 end
 
 
@@ -263,8 +271,8 @@ get '/event/:id' do
   # get whatever man?
 
   # render EVENT
-  template = read_template('event')
-  template.result(stuff)
+  page = Page.new('event')
+  page.render({  })
 end
 
 get '/article/:id' do
@@ -284,9 +292,9 @@ get '/article/:id' do
   trending_items = TRENDING_SERVICE.get_top_items(3)
 
   # render ARTICLE
-  template = read_template('article')
-  template.result({ :article     => article,
-                    :main_story => main_story })
+  page = Page.new('article')
+  page.render({ :article     => article,
+                :main_story => main_story })
 end
 
 
