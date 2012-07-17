@@ -18,13 +18,16 @@ class YamlStorage < Storage
   end
 
   def get_by_id(id)
-    YAML.load_file("#{@root_dir}/#{id}.yml")
+    path = "#{@root_dir}/#{id}.yml"
+    YAML.load_file(path) if File.exists?(path)
   end
 
-  def filter(matcher, limit)
-    Dir["#{@root_dir}/*.yml"].
+  def filter(matcher, limit=nil)
+    # TODO: use limit if set
+    item_ids = Dir.entries(@root_dir).map {|f| f.scan(/(.+)\.yml$/)[0]}.flatten.compact
+    item_ids.
       # FIXME: correctly map id
-      map {|data_file| id = data_file; [id, YAML.load_file(data_file)]}.
+      map {|id| [id, YAML.load_file("#{@root_dir}/#{id}.yml")]}.
       select {|id, data| matcher.all? {|key, val| data[key] == val} }
   end
 end
@@ -38,10 +41,10 @@ module BackedByYaml
 
     def get_by_id(id)
       data = data_store.get_by_id(id)
-      self.new(id, data)
+      data && self.new(id, data)
     end
 
-    def filter(matcher, limit)
+    def filter(matcher, limit=nil)
       items = data_store.filter(matcher, limit)
       items.map {|id, data| self.new(id, data)}
     end
@@ -58,7 +61,7 @@ end
 
 
 class Article
-  attr_reader :title, :author, :body, :published_date, :main_image
+  attr_reader :id, :title, :author, :body, :published_date, :main_image, :main_image_caption
 
   include BackedByYaml
   set_mock_path "mock_data/articles"
@@ -71,6 +74,7 @@ class Article
     @body = data[:body]
     @published_date = data[:published_date]
     @main_image = data[:main_image]
+    @main_image_caption = data[:main_image_caption]
 
     @main_event_id = data[:main_event]
   end
@@ -89,12 +93,13 @@ class Article
 
   def extract_main_actors(limit)
     # TODO: parse?
+    @body.scan(/<span class="gu-ref.*" data-ref-id="(.*?)">.*?<\/span>/)
   end
 end
 
 
 class Event
-  attr_reader :title, :synopsis, :summary, :background
+  attr_reader :id, :title, :synopsis, :summary, :background
 
   include BackedByYaml
   set_mock_path "mock_data/events"
@@ -118,7 +123,7 @@ class Event
   end
 
   def main_story
-    @main_story ||= @story_id && Story.get_by_id(@story_id)
+    @main_story ||= @main_story_id && Story.get_by_id(@main_story_id)
   end
 
   def is_live? # or active?
@@ -147,7 +152,7 @@ end
 
 
 class Story
-  attr_reader :title, :synopsis
+  attr_reader :id, :title, :synopsis
 
   include BackedByYaml
   set_mock_path "mock_data/stories"
@@ -247,16 +252,20 @@ RECOMMENDATION_SERVICE = RecommendationService.new
 USER = 'you'
 
 
+# static assets in /public
+set :public_folder, 'public'
+
+
 get '/' do
-  # HOMEPAGE
-  # template = read_template('welcome')
-  # template.result(:who => "You")
+  # Hacky index of all articles on the root page
+  all_articles = Article.filter({})
+  "<ul>" + all_articles.map {|a| "<li><a href=\"/article/#{a.id}\">#{a.title}</a></li>"}.join + "</ul>"
 end
 
 
 get '/story/:id' do
   id = params[:id]
-  # STORY
+  # render STORY
 end
 
 get '/event/:id' do
@@ -267,15 +276,15 @@ get '/event/:id' do
 
   latest_updates = event.latest_updates
 
-  story = event.main_story # stories?
-  previous_events = story.events_before(event)
+  main_story = event.main_story # stories?
+  previous_events = main_story.events_before(event)
   # and next, when not on latest event
 
   # TODO: determine:
   # - is the event live/current
   # - is the event the most recent in its story
 
-  related_stories = story.get_related_stories_for(event) # i.e. not the main story?
+  related_stories = main_story.get_related_stories_for(event) # i.e. not the main story?
   
 
   live_articles = event.find_live_articles
@@ -289,12 +298,13 @@ get '/event/:id' do
 
   # render EVENT
   page = Page.new('event')
-  page.render({  })
+  page.render({ :event => event,
+                :main_story => main_story })
 end
 
 get '/article/:id' do
   id = params[:id]
-  article = Article.get_by_id(id)
+  article = Article.get_by_id(id) or halt 404
   main_story = article.main_story
   main_event = article.main_event
   related_events = article.secondary_events
@@ -310,7 +320,8 @@ get '/article/:id' do
 
   # render ARTICLE
   page = Page.new('article')
-  page.render({ :article     => article,
+  page.render({ :article    => article,
+                :main_event => main_event,
                 :main_story => main_story })
 end
 
