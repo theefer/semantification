@@ -1,0 +1,20 @@
+
+
+# Installation
+
+- Install Ruby
+- Install Rubygems
+
+- Install dependencies:
+
+  $ gem install sinatra erubis
+
+# Run
+
+Start the app:
+
+  $ ruby app.rb
+
+Then open a browser to:
+
+  http://localhost:4567/
