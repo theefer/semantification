@@ -1,0 +1,33 @@
+<section id="main" class="fluid-row article">
+
+<article class="article-body col-6">
+
+<h1><%= article.title %></h1>
+
+<figure>
+  <img src="<%= article.main_image %>"/>
+  <figcaption>
+    <%= article.main_image_caption %>
+  </figcaption>
+</figure>
+
+<%= article.body %>
+
+</article>
+
+<aside class="col-2">
+&nbsp;
+</aside>
+
+<aside class="col-4">
+
+  <section class="event-box">
+  <div class="hd zone-border zone-border-medium">
+    <h4 class="sub-heading"><a href="/event/<%= main_event.id %>"><%= main_event.title %></a></h4>
+  </div>
+  <%= main_event.synopsis %>
+  </section>
+
+</aside>
+
+</section>

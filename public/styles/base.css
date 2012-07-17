@@ -1,0 +1,29 @@
+
+#logo {
+  background: url(/images/guardian_logo.gif) no-repeat;
+  width: 115px;
+  height: 22px;
+  text-indent: -9999px;
+}
+
+
+.site-head {
+  margin: 10px 0;
+}
+
+.nav-tags {
+  margin-bottom: 10px;
+}
+
+.site-search {
+  float: right;
+}
+.site-logo {
+  float: left;
+  margin-top: 7px;
+}
+
+
+.gu-ref {
+  border-bottom: 1px dotted #999;
+}
