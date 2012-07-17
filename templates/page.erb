@@ -2,13 +2,19 @@
 <html>
 <head>
   <link rel="stylesheet" href="http://pasteup.gu.com/0.0.1/css/pasteup.min.css" type="text/css"/>
-  <style type="text/css">
-  </style>
+  <link rel="stylesheet" href="/styles/base.css" type="text/css"/>
 </head>
 <body class="fluid-wrap">
 
-<header>
-<!-- logo, search -->
+<header class="site-head">
+	<div class="site-logo" id="logo">The Guardian</div>
+
+	<div class="site-search">
+	<form method="get" action="http://www.guardian.co.uk/search" target="_TOP">
+		<input type="text" name="q" placeholder="Your search terms…"/>
+		<input type="submit" value="Search" />
+	</form>
+	</div><!-- /.site-search -->
 </header>
 
 <nav>
