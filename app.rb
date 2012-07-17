@@ -20,15 +20,30 @@ class YamlStorage < Storage
   def get_by_id(id)
     YAML.load_file("#{@root_dir}/#{id}.yml")
   end
+
+  def filter(matcher, limit)
+    Dir["#{@root_dir}/*.yml"].
+      # FIXME: correctly map id
+      map {|data_file| id = data_file; [id, YAML.load_file(data_file)]}.
+      select {|id, data| matcher.all? {|key, val| data[key] == val} }
+  end
 end
 
 
 module BackedByYaml
   module ClassMethods
-    def get_by_id(id)
+    def data_store
       @data_store ||= YamlStorage.new(@mock_dir)
-      data = @data_store.get_by_id(id)
+    end
+
+    def get_by_id(id)
+      data = data_store.get_by_id(id)
       self.new(id, data)
+    end
+
+    def filter(matcher, limit)
+      items = data_store.filter(matcher, limit)
+      items.map {|id, data| self.new(id, data)}
     end
 
     def set_mock_path(mock_dir)
@@ -50,6 +65,7 @@ class Article
 
   def initialize(id, data)
     @id = id
+    @type = data[:type]
     @title = data[:title]
     @author = data[:author]
     @body = data[:body]
@@ -125,6 +141,7 @@ class Event
   end
 
   def get_articles_by_type(type, limit)
+    articles = Article.filter({:main_event => self.id, :type => type}, limit)
   end
 end
 
@@ -139,8 +156,8 @@ class Story
     @id = id
     @title = data[:title]
     @synopsis = data[:synopsis]
-    # @summary
-    # @background
+    @summary = data[:summary]
+    @background = data[:background]
   end
 
   def events_before(event)
