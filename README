@@ -18,3 +18,11 @@ Start the app:
 Then open a browser to:
 
   http://localhost:4567/
+
+
+If you want it to auto-reload your app when files change, use Shotgun:
+
+  $ gem install shotgun
+  $ shotgun myapp.rb
+
+  http://stackoverflow.com/questions/1247125/how-to-get-sinatra-to-auto-reload-the-file-after-each-change
