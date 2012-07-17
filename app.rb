@@ -3,35 +3,112 @@ require 'rubygems'
 require 'sinatra'
 require 'erubis'
 
+require 'yaml'
 
+class Storage
+  def get_by_id(id)
+    raise NotImplementedError
+  end
+end
+
+
+class YamlStorage < Storage
+  def initialize(root_dir)
+    @root_dir = root_dir
+  end
+
+  def get_by_id(id)
+    YAML.load_file("#{@root_dir}/#{id}.yml")
+  end
+end
+
+
+module BackedByYaml
+  module ClassMethods
+    def get_by_id(id)
+      @data_store ||= YamlStorage.new(@mock_dir)
+      data = @data_store.get_by_id(id)
+      self.new(id, data)
+    end
+
+    def set_mock_path(mock_dir)
+      @mock_dir = mock_dir
+    end
+  end
+
+  def self.included(klass)
+    klass.extend(ClassMethods)
+  end
+end
 
 
 class Article
-  def initialize()
-    @id
-    @title
-    @author
-    @body
-    @published_date
-    @main_image
+  attr_reader :title, :author, :body, :published_date, :main_image
+
+  include BackedByYaml
+  set_mock_path "mock_data/articles"
+
+  def initialize(id, data)
+    @id = id
+    @title = data[:title]
+    @author = data[:author]
+    @body = data[:body]
+    @published_date = data[:published_date]
+    @main_image = data[:main_image]
+
+    @main_event_id = data[:main_event]
   end
 
-  def self.get_by_id(id)
-    data = somehow_by_id
-    Article.new(data)
+  def main_event
+    @main_event ||= @main_event_id && Event.get_by_id(@main_event_id)
+  end
+
+  def secondary_events
+    []
+  end
+
+  def main_story
+    main_event.main_story
+  end
+
+  def extract_main_actors(limit)
+    # TODO: parse?
   end
 end
 
 
 class Event
-  def initialize()
-    @id
-    @title
-    @synopsis
-    @summary
-    @background
-    @main_story
-    @roles
+  attr_reader :title, :synopsis, :summary, :background
+
+  include BackedByYaml
+  set_mock_path "mock_data/events"
+
+  def initialize(id, data)
+    @id = id
+    @title = data[:title]
+    @synopsis = data[:synopsis]
+    @summary = data[:summary]
+    @background = data[:background]
+
+    @main_story_id = data[:main_story]
+    @roles_ids = data[:roles]
+  end
+
+  def roles
+    @roles ||= @roles_ids.map do |role|
+      actor = Actor.get_by_id(role[:actor])
+      Role.new(role[:type], actor)
+    end
+  end
+
+  def main_story
+    @main_story ||= @story_id && Story.get_by_id(@story_id)
+  end
+
+  def is_live? # or active?
+  end
+
+  def is_latest_event_in_story?
   end
 
   def main_image
@@ -49,19 +126,19 @@ class Event
 
   def get_articles_by_type(type, limit)
   end
-
-  def self.get_by_id(id)
-    data = somehow_by_id
-    Event.new(data)
-  end  
 end
 
 
 class Story
-  def initialize()
-    @id
-    @title
-    @synopsis
+  attr_reader :title, :synopsis
+
+  include BackedByYaml
+  set_mock_path "mock_data/stories"
+
+  def initialize(id, data)
+    @id = id
+    @title = data[:title]
+    @synopsis = data[:synopsis]
     # @summary
     # @background
   end
@@ -75,29 +152,33 @@ end
 
 
 class Actor
-  def initialize
-    @first_name
-    @last_name
-    @bio
-    @image
+  attr_reader :first_name, :last_name
+
+  include BackedByYaml
+  set_mock_path "mock_data/actors"
+
+  def initialize(id, data)
+    @id = id
+    @first_name = data[:first_name]
+    @last_name = data[:last_name]
+    @bio = data[:bio]
+    @image = data[:image]
     # more stuff
   end
 end
 
-class Person < Actor
-  def initialize
-  end
-end
+# class Person < Actor
+# end
 
-class Organisation < Actor
-  def initialize
-  end
-end
+# class Organisation < Actor
+# end
 
 class Role
-  def initialize
-    @type
-    @actor
+  attr_reader :type, :actor
+
+  def initialize(type, actor)
+    @type = type
+    @actor = actor
   end
 end
 
@@ -123,7 +204,7 @@ class RecommendationService
   def initialize
   end
 
-  def find_next_articles(article)
+  def find_next_articles(article, user)
   end
 end
 
@@ -140,7 +221,10 @@ get '/' do
   template.result(:who => "You")
 end
 
-get '/tests' do
+get '/test' do
+  article = Article.get_by_id('foo-bar')
+  p article
+
   read_template('test').result
 end
 
@@ -186,8 +270,7 @@ end
 get '/article/:id' do
   id = params[:id]
   article = Article.get_by_id(id)
-  body = article.body
-  story = article.main_story
+  main_story = article.main_story
   main_event = article.main_event
   related_events = article.secondary_events
   latest_updates = main_event.latest_updates
@@ -202,7 +285,8 @@ get '/article/:id' do
 
   # render ARTICLE
   template = read_template('article')
-  template.result(stuff)
+  template.result({ :article     => article,
+                    :main_story => main_story })
 end
 
 
