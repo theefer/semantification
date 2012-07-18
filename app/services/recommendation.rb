@@ -4,7 +4,7 @@ class RecommendationService
   end
 
   def find_next_articles(article, user)
-    [article]
-    # FIXME: once we have other articles, return them instead!
+    all_articles_for_event = article.main_event.get_all_articles
+    all_articles_for_event.reject {|art| art == article}
   end
 end

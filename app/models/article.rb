@@ -10,6 +10,7 @@ class Article
     @title = data[:title]
     @author = data[:author]
     @body = data[:body]
+    @is_live = data[:is_live]
     @published_date = data[:published_date]
     @main_image = data[:main_image]
     @main_image_caption = data[:main_image_caption]
@@ -29,8 +30,30 @@ class Article
     main_event.main_story
   end
 
+  def body_text
+    if body.is_a?(Array)
+      body.map do |live_block|
+        "<div class=\"block\" id=\"block-#{live_block[:id]}\">" +
+          "<time>"+Time.parse(live_block[:date]).to_s + "</time>: " +
+          live_block[:text] +
+          "</div>"
+      end.join
+    else
+      body
+    end
+  end
+
+  # NOTE: liveblog specific
+  def is_live?
+    @is_live
+  end
+
   def extract_main_actors(limit)
     # TODO: parse?
-    @body.scan(/<span class="gu-ref.*" data-ref-id="(.*?)">.*?<\/span>/)
+    body_text.scan(/<span class="gu-ref.*" data-ref-id="(.*?)">.*?<\/span>/)
+  end
+
+  def ==(other)
+    self.class == other.class && self.id == other.id
   end
 end

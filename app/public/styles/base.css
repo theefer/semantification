@@ -55,3 +55,15 @@ body {
   background-color: rgba(200, 200, 200, 0.8);
   padding: 0 5px;
 }
+
+
+.latest-update {
+  clear: both;
+}
+
+.latest-update .text {
+  display: block;
+}
+.latest-update .date {
+  float: right;
+}
