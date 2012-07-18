@@ -54,7 +54,11 @@ class Event
   def extract_related_quote
   end
 
-  def get_articles_by_type(type, limit)
-    articles = Article.filter({:main_event => self.id, :type => type}, limit)
+  def get_all_articles(limit=nil)
+    Article.filter({:main_event => self.id}, limit)
+  end
+
+  def get_articles_by_type(type, limit=nil)
+    Article.filter({:main_event => self.id, :type => type}, limit)
   end
 end
