@@ -1,0 +1,16 @@
+<section class="opinion">
+  <header>
+    <h3>Opinions<h3>
+  </header>
+  <% for art in event.get_articles_by_type(opinion) %>
+    <article> 
+      <% if art.main_image %>
+        <a href="/art/<% art.id %>"><img src"<% art.main_image %>" /></a>
+      <% end %>
+      <h4>
+        <a href="/art/<% art.id %>" title="<% art.synopsis %>"><% art.title %></a>
+      </h4>
+      <p><% art.synopsis %></p>
+    </article>
+  <% end %>
+</section>
