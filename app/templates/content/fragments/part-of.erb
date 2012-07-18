@@ -9,6 +9,7 @@
 				<a href="/story/<% story.id %>"><% story.title %></a>
 			</h3>
 		</header>
+        <h3>Previous Key Events</h3>
 	<% for past_event in story.events_before(event) %>
 		<article> 
 			<% if event.main_image %>
