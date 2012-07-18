@@ -2,7 +2,7 @@
   <header>
     <h3>Opinions<h3>
   </header>
-  <% for art in event.get_articles_by_type(opinion) %>
+  <% for art in event.get_articles_by_type('opinion', 2) %>
     <article> 
       <% if art.main_image %>
         <a href="/art/<% art.id %>"><img src"<% art.main_image %>" /></a>
