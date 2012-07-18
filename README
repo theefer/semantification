@@ -4,20 +4,23 @@
 
 - Install Ruby
 - Install Rubygems
+- Install Bundler:
 
-- Install dependencies:
+ gem install bundler
 
-  $ gem install sinatra erubis
+- Install the application
+
+    $ bundle
 
 # Run
 
 Start the app:
 
-  $ ruby app.rb
+  $ rackup
 
 Then open a browser to:
 
-  http://localhost:4567/
+  http://localhost:9292
 
 
 If you want it to auto-reload your app when files change, use Shotgun:
