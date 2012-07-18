@@ -26,4 +26,7 @@ class Story
   def data
     @data.merge(:id => @id)
   end
+
+  def main_image
+  end
 end

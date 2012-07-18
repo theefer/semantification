@@ -1,0 +1,14 @@
+<section id="latest-updates">
+   <header>
+       <h2>Latest Updates</h2>  
+   </header>
+   <section>
+       <% for art in event.latest_updates %>
+            <article>
+                <header>
+                    <h3><a href="/article/<% art.id %>" title="<% art.synopsis %>"><% art.title %></a></h3>
+                </header>
+            </article>
+       <% end %>
+   </section>
+</section>

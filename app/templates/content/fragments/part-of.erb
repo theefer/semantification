@@ -1,0 +1,24 @@
+<section id="part-of">
+	<header>
+		<h2>Part Of</h2>
+	</header>
+	<section>
+		<header>
+			<a href="/story/<% story.id %>"><img src="<% story.main_image %>" /></a>
+			<h3>
+				<a href="/story/<% story.id %>" title="<% story.synopsis %>"><% story.title %></a>
+			</h3>
+		</header>
+        <h3>Previous Key Events</h3>
+	<% for past_event in story.events_before(event) %>
+		<article> 
+			<% if past_event.main_image %>
+				<a href="/event/<% past_event.id %>"><img src"<% past_event.main_image %>" /></a>
+			<% end %>
+			<h4>
+				<a href="/event/<% past_event.id %>" title="<% past_event.synopsis %>"><% past_event.title %></a>
+			</h4>
+		</article>
+	<% end %>
+	</section>
+</section>
