@@ -7,6 +7,15 @@
 <h2>Summary</h2>
 <%= event.summary %>
 
+<% if all_articles.size > 0 %>
+<h2>Articles</h2>
+<ul>
+<% for art in all_articles %>
+  <li><a href="/article/<%= art.id %>"><%= art.title %></a></li>
+<% end %>
+</ul>
+<% end %>
+
 </article>
 
 <aside class="col-4">

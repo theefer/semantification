@@ -36,6 +36,7 @@ class Event
   end
 
   def latest_updates
+    []
   end
 
   def find_live_articles

@@ -12,6 +12,10 @@ class Actor
     @image = data[:image]
     # more stuff
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
 
 # class Person < Actor

@@ -41,6 +41,7 @@ get '/event/:id' do
   live_articles = event.find_live_articles
   quote = event.extract_related_quote
 
+  all_articles = event.get_articles_by_type('article', 2)
   opinion_articles = event.get_articles_by_type(:opinion, 2)
 
   # get impact on you articles?
@@ -50,7 +51,8 @@ get '/event/:id' do
   # render EVENT
   page = Page.new('event')
   page.render({ :event => event,
-                :main_story => main_story })
+                :main_story => main_story,
+                :all_articles => all_articles })
 end
 
 get '/article/:id' do
@@ -73,7 +75,9 @@ get '/article/:id' do
   page = Page.new('article')
   page.render({ :article    => article,
                 :main_event => main_event,
-                :main_story => main_story })
+                :main_story => main_story,
+                :main_actors => main_actors,
+                :next_articles => next_articles })
 end
 
 
