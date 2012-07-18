@@ -1,8 +1,8 @@
-<section class="analysis">
+<section class="key-player-impact">
   <header>
-    <h3>In depth<h3>
+    <h3>Key Player<h3>
   </header>
-  <% for art in event.get_articles_by_type('analysis', 1) %>
+  <% for art in event.get_articles_by_type('key-player-impact', 1) %>
     <article> 
       <% if art.main_image %>
         <a href="/art/<% art.id %>"><img src"<% art.main_image %>" /></a>

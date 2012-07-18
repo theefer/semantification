@@ -25,7 +25,7 @@ get '/event/:id' do
   main_image = event.main_image
   background = event.background
 
-  latest_updates = event.latest_updates
+  latest_updates = event.latest_updates(5)
 
   main_story = event.main_story # stories?
   previous_events = main_story.events_before(event)
@@ -38,11 +38,11 @@ get '/event/:id' do
   related_stories = main_story.get_related_stories_for(event) # i.e. not the main story?
   
 
-  live_articles = event.find_live_articles
+  live_article = event.find_live_article
   quote = event.extract_related_quote
 
   all_articles = event.get_articles_by_type('article', 2)
-  opinion_articles = event.get_articles_by_type(:opinion, 2)
+  opinion_articles = event.get_articles_by_type('opinion', 2)
 
   # get impact on you articles?
   # get in depth articles?
@@ -61,7 +61,7 @@ get '/article/:id' do
   main_story = article.main_story
   main_event = article.main_event
   related_events = article.secondary_events
-  latest_updates = main_event.latest_updates
+  latest_updates = main_event.latest_updates(5)
 
   main_actors = article.extract_main_actors(3)
 
@@ -77,7 +77,8 @@ get '/article/:id' do
                 :main_event => main_event,
                 :main_story => main_story,
                 :main_actors => main_actors,
-                :next_articles => next_articles })
+                :next_articles => next_articles,
+                :latest_updates => latest_updates })
 end
 
 

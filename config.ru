@@ -5,6 +5,8 @@ require 'sinatra'
 require 'erubis'
 require 'yaml'
 require 'json'
+require 'time-ago-in-words'
+require 'auto_excerpt'
 
 # libs 
 
