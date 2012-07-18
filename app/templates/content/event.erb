@@ -1,19 +1,48 @@
-<section id="main" class="fluid-row event">
 
-<article class="event-main col-8">
+<section role="background">
+ ...
+</section>
 
-<h1>Event: <%= event.title %></h1>
+<section id="main" class="fluid-row event" role="event">
 
-<h2>Summary</h2>
+<article class="event-main">
 
+<h1><%= event.title %></h1>
+
+<!-- 
+<img 
+    src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2011/5/10/1305036701106/Milly-Dowler-007.jpg"
+    id="hero"
+/>
+-->
+
+<aside id="background">
+    <h2>Summary</h2>
+    <%= event.summary %>
+</aside>
+
+<aside>
+    <h2>Since your last visit</h2>
+    <%= event.summary %>
+</aside>
+
+<div class="arrow_box"
+        onclick="document.getElementsByTagName('body')[0].className='active';">
+    <h2>Understand the Impact</h2>
     <p>
-        <%= event.summary %>
+        - Phone Hacking
+        - Murder of Milly Dowler
+        - News International bid for BSkyB 
     </p>
+</div>
 
-    <blockquote>
-        Hello.
-    </blockquote>
-
+<aside id="characters">
+    <h2>Characters</h2>
+    <img src="http://news.bbcimg.co.uk/media/images/54023000/jpg/_54023105_murdoch_reuters_238.jpg" />
+    <img src="http://news.bbcimg.co.uk/media/images/50975000/jpg/_50975432_wade_afp.jpg" />
+    <img src="http://news.bbcimg.co.uk/media/images/54023000/jpg/_54023097_jamesmurdoch_ap.jpg"/>
+    <img src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2011/5/10/1305036701106/Milly-Dowler-007.jpg"/>
+</aside>
 
 <% if all_articles.size > 0 %>
 <h2>Articles</h2>
@@ -26,15 +55,9 @@
 
 </article>
 
-<aside class="col-4">
-
-  <section class="story-box">
-  <div class="hd zone-border zone-border-medium">
-    <h4 class="sub-heading"><a href="/story/<%= main_story.id %>"><%= main_story.title %></a></h4>
-  </div>
-  <%= main_story.synopsis %>
-  </section>
-
-</aside>
-
 </section>
+
+<section class="fluid-row" role="depth">
+ ... 
+</section>
+

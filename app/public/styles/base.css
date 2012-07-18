@@ -9,6 +9,9 @@ body {
   text-indent: -9999px;
 }
 
+.fluid-row { 
+    clear: none;
+}
 
 .site-head {
   margin: 10px 0;
@@ -22,8 +25,6 @@ body {
   float: right;
 }
 .site-logo {
-  float: left;
-  margin-top: 7px;
 }
 
 

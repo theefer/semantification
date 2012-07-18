@@ -1,0 +1,51 @@
+/** credit: http://jasonweaver.name/lab/offcanvas/ */
+
+[role="background"], [role="event"], [role="depth"] {
+        -webkit-transition: .3s all ease;           
+        transition: .3s all ease;           
+        width: 95%;
+        padding: 7px;
+        min-height: 200px;
+    }
+
+[role="background"] {   
+ margin-left: -100%;
+ float: left;
+}
+
+[role="event"] {
+ margin-left: 0;
+ float: left;
+}
+
+[role="depth"] {    
+ margin-right: -200%;
+ float: left;        
+}
+
+/* active left */
+.active [role="background"] {   
+ margin-left: 0; 
+ width: 95%;
+}
+.active [role="event"]{
+ margin-right: -100%;
+
+}
+.active [role="depth"] {    
+ margin-right: -100%;
+ float: right;       
+}
+
+/* right */
+.depth [role="background"] {   
+ margin-left: -100%; 
+}
+.depth [role="event"]{
+ margin-left: -95%;
+}
+.depth [role="depth"] {    
+    margin-left: 0;
+    width: 80%;;
+}
+
