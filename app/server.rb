@@ -82,5 +82,30 @@ end
 # Or an API?
 
 get '/api/story/:id' do
-  # STORY
+  id = params[:id]
+  story = Story.get_by_id(id) or halt 404
+  story_data = story.data
+  data = story_data.merge({
+    :uri => "/api/story/#{story_data[:id]}",
+    :links => [{:rel => 'main_actors',
+                :href => "/api/story/#{story_data[:id]}/main_actors"}]
+  })
+
+  content_type "application/json"
+  data.to_json
 end
+
+get '/api/story/:id/main_actors' do
+  id = params[:id]
+  story = Story.get_by_id(id) or halt 404
+  story_data = story.data
+  data = story_data.merge({
+                            :uri => "/api/story/#{story_data[:id]}",
+                            :links => [{:rel => '', :href => ''}
+                                      ]
+  })
+
+  content_type "application/json"
+  story.data.to_json
+end
+

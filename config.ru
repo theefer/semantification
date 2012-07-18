@@ -4,6 +4,7 @@ require 'rubygems'
 require 'sinatra'
 require 'erubis'
 require 'yaml'
+require 'json'
 
 # libs 
 
