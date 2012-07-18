@@ -1,23 +1,3 @@
-require 'rubygems'
-
-require 'sinatra'
-require 'erubis'
-
-require 'yaml'
-
-require 'lib/yaml'
-
-require 'models/article'
-require 'models/event'
-require 'models/story'
-require 'models/actor'
-require 'models/page'
-require 'models/role'
-
-require 'services/trending'
-require 'services/recommendation'
-
-# -----
 
 TRENDING_SERVICE = TrendingService.new
 RECOMMENDATION_SERVICE = RecommendationService.new
@@ -25,7 +5,7 @@ RECOMMENDATION_SERVICE = RecommendationService.new
 USER = 'you'
 
 # static assets in /public
-set :public_folder, 'public'
+set :public_folder, 'app/public'
 
 get '/' do
   # Hacky index of all articles on the root page

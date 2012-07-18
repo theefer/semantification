@@ -13,7 +13,7 @@ class Page
   private
 
   def read_template(name)
-    template = File.read("templates/#{name}.erb")
+    template = File.read("app/templates/#{name}.erb")
     Erubis::Eruby.new(template)
   end
 end
