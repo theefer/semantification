@@ -1,3 +1,6 @@
+body {
+    background-color: white;
+}
 
 #logo {
   background: url(/images/guardian_logo.gif) no-repeat;
