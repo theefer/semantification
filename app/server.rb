@@ -41,6 +41,7 @@ get '/event/:id' do
   live_articles = event.find_live_articles
   quote = event.extract_related_quote
 
+  all_articles = event.get_articles_by_type('article', 2)
   opinion_articles = event.get_articles_by_type(:opinion, 2)
 
   # get impact on you articles?
@@ -50,7 +51,8 @@ get '/event/:id' do
   # render EVENT
   page = Page.new('event')
   page.render({ :event => event,
-                :main_story => main_story })
+                :main_story => main_story,
+                :all_articles => all_articles })
 end
 
 get '/article/:id' do
@@ -73,7 +75,9 @@ get '/article/:id' do
   page = Page.new('article')
   page.render({ :article    => article,
                 :main_event => main_event,
-                :main_story => main_story })
+                :main_story => main_story,
+                :main_actors => main_actors,
+                :next_articles => next_articles })
 end
 
 
@@ -82,5 +86,30 @@ end
 # Or an API?
 
 get '/api/story/:id' do
-  # STORY
+  id = params[:id]
+  story = Story.get_by_id(id) or halt 404
+  story_data = story.data
+  data = story_data.merge({
+    :uri => "/api/story/#{story_data[:id]}",
+    :links => [{:rel => 'main_actors',
+                :href => "/api/story/#{story_data[:id]}/main_actors"}]
+  })
+
+  content_type "application/json"
+  data.to_json
 end
+
+get '/api/story/:id/main_actors' do
+  id = params[:id]
+  story = Story.get_by_id(id) or halt 404
+  story_data = story.data
+  data = story_data.merge({
+                            :uri => "/api/story/#{story_data[:id]}",
+                            :links => [{:rel => '', :href => ''}
+                                      ]
+  })
+
+  content_type "application/json"
+  story.data.to_json
+end
+

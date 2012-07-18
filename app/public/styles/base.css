@@ -29,4 +29,29 @@ body {
 
 .gu-ref {
   border-bottom: 1px dotted #999;
+  cursor: pointer; /* backward compat */
+  cursor: help;
+}
+
+
+.article-thumb-list {
+  list-style-type: none;
+  margin: 0; padding: 0;
+}
+
+.article-thumb {
+  position: relative;
+  display: inline-block;
+}
+
+.article-thumb img {
+  width: 200px;
+  float: left;
+}
+
+.article-thumb .title {
+  position: absolute;
+  left: 0; bottom: 0; right: 0;
+  background-color: rgba(200, 200, 200, 0.8);
+  padding: 0 5px;
 }

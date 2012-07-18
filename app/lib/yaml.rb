@@ -2,6 +2,10 @@ class Storage
   def get_by_id(id)
     raise NotImplementedError
   end
+
+  def filter(matcher, limit)
+    raise NotImplementedError
+  end
 end
 
 class YamlStorage < Storage
