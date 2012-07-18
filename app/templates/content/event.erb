@@ -2,10 +2,18 @@
 
 <article class="event-main col-8">
 
-<h1><%= event.title %></h1>
+<h1>Event: <%= event.title %></h1>
 
 <h2>Summary</h2>
-<%= event.summary %>
+
+    <p>
+        <%= event.summary %>
+    </p>
+
+    <blockquote>
+        Hello.
+    </blockquote>
+
 
 <% if all_articles.size > 0 %>
 <h2>Articles</h2>
