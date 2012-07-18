@@ -1,0 +1,29 @@
+:title: News International phone hacking scandal
+:alias: Hackgate 
+:synopsis: >-
+   <p>Allegations that the News of the World (NoW) had been illicitly hacking into the voicemail messages of prominent people to find stories surfaced in 2006, when NoW royal editor, Clive Goodman, and private investigator, Glenn Mulcaire, were found to have been intercepting the phones of royal aides.</p>
+:summary: >-
+   <p>The News International phone-hacking scandal is an ongoing controversy involving the defunct News of the World and other British newspapers published by News International, a subsidiary of News Corporation. Employees of the newspaper were accused of engaging in phone hacking, police bribery, and exercising improper influence in the pursuit of publishing stories. Investigations conducted from 2005–2007 concluded that the paper's phone hacking activities were limited to celebrities, politicians and members of the British Royal Family.</p>
+:background: >-
+   <p>background.</p>
+:roles:
+  - :type: culprit
+    :actor: glen-mulclair
+    :about: >-
+        <p>Glen Mulclair wwas found guilty of illegally intercepting phone messages from Clarence House and imprisoned for six months after having pleaded guilty; his co-conspirator News of the World royal editor Clive Goodman was sentenced to four months.</p>
+  - :type: culprit
+    :actor: clive-goodman
+    :about: >-
+        <p>Goodman was imprisoned for four months, having pleaded guilty to illegally intercepting phone messages from Clarence House. This lead to the closure of the News of the World.</p>
+  - :type: defendent
+    :actor: rupert-murdoch
+    :about: >-
+       <p>Murdoch founded and continues to hold a majority stake in News Corporation, the company that owns News International, which in turned owned News of the World at the time of the phone hacking allegations. Rupert Murdoch admitted that a cover-up had taken place, and a parliamentary select committee released a report concluding that Murdoch "exhibited wilful blindness to what was going on in his companies and publications," and stated that he was "not a fit person to exercise the stewardship of a major international company."</p> 
+  - :type: defendent 
+    :actor: rebecca-brooks
+    :about: >-
+       <p>Brooks was Chief Executive Officer of News International from 2009 to 2011, having previously served as the youngest editor of a British national newspaper as editor of the News of the World during the phone hacking period.</p>
+  - :type: defendent
+    :actor: james-murdoch
+    :about: >-
+       <p>He is the former chairman and chief executive of News Corp., Europe and Asia, where he oversaw assets such as News International.</p>

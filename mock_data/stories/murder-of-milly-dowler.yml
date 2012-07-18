@@ -1,0 +1,16 @@
+:title: Murder of Milly Dowler 
+:synopsis: >-
+  <p>Amanda Jane "Milly" Dowler was a 13-year-old English girl who was abducted on her way home from school in Walton-on-Thames, Surrey, on 21 March 2002, and subsequently murdered. Her body was discovered on 18 September 2002.</p>
+:summary: >-
+  <p></p>
+:background: >-
+  <p></p>
+:roles:
+  - :type: victim
+    :actor: milly-dowler
+  - :type: murderer
+    :actor: levi-bellfield
+  - :type: family
+    :actor: sally-dowler
+  - :type: family
+    :actor: bob-dowler
