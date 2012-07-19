@@ -3,29 +3,43 @@
  ...
 </section>
 
+<img 
+    src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2011/5/10/1305036701106/Milly-Dowler-007.jpg"
+    id="hero" />
+    
 <section id="main" class="fluid-row event" role="event">
+
+  <%= Fragment.new('key-events').render(:story => event.main_story) %>
 
 <article class="event-main col-8">
 
 <h1><%= event.title %></h1>
 
-<!-- 
-<img 
-    src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2011/5/10/1305036701106/Milly-Dowler-007.jpg"
-    id="hero"
-/>
--->
+<p class="when">
+    <b>When</b>: <%= event.when %> <!-- --> 
+</p>
+
 
 <aside id="background">
     <h2>Summary</h2>
     <%= event.summary %>
 </aside>
 
+<blockquote class="col-4">
+    <span class="bqstart">“</span>
+    <span class="quote">
+        We need those messages as evidence. Anybody who destroys that evidence is seriously interfering with the course of a police investigation.
+    </span>
+    <span class="bqend">”</span>
+</blockquote>
+
+
 <aside>
     <h2>Since your last visit</h2>
     <%= event.summary %>
 </aside>
 
+<!-- 
 <div class="arrow_box"
         onclick="document.getElementsByTagName('body')[0].className='active';">
     <h2>Understand the Impact</h2>
@@ -35,6 +49,7 @@
         - News International bid for BSkyB 
     </p>
 </div>
+-->
 
 <aside id="characters">
     <h2>Characters</h2>
@@ -49,7 +64,7 @@
 <h2>Articles</h2>
 <ul>
 <% for art in all_articles %>
-  <li><a href="/article/<%= art.id %>"><%= art.title %></a></li>
+  <li><a href="/articles/<%= art.id %>"><%= art.title %></a></li>
 <% end %>
 </ul>
 <% end %>
@@ -61,33 +76,12 @@
 
 <aside class="widgets col-4">
 
-  <% if main_story %>
-  <section class="story-box">
-  <div class="hd zone-border zone-border-medium">
-    <h4 class="sub-heading"><a href="/story/<%= main_story.id %>"><%= main_story.title %></a></h4>
-  </div>
-  <%= main_story.synopsis %>
-  </section>
-  <% end %>
-
   <% if event.widgets.include?('map') %>
-  <div id="map_canvas" style="width:100%; height: 200px"></div>
-  <script type="text/javascript">
-  // TODO: highlight location, allow multiple maps
-  var el = document.getElementById("map_canvas");
-  window.onload = function() {
-    initMaps(el, <%= event.location[:lat] %>, <%= event.location[:long] %>)
-  };
-  </script>
+  <%= Fragment.new('location').render(:event => event) %>
   <% end %>
 
   <% for concept in concept_widgets %>
-  <section class="story-box">
-  <div class="hd zone-border zone-border-medium">
-    <h4 class="sub-heading">What is <em><%= concept.title %></em>?</h4>
-  </div>
-  <%= concept.definition %>
-  </section>  
+  <%= Fragment.new('concept').render(:concept => concept) %>
   <% end %>
 
   <% if previous_events.size > 0%>
@@ -102,7 +96,7 @@
 
 </section>
 
-<section class="fluid-row" role="depth">
+<section role="depth">
  ... 
 </section>
 

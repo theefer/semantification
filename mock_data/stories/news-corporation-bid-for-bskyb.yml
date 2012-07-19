@@ -5,3 +5,14 @@
   <p>In June 2010, News Corporation launched a bid to takeover British Sky Broadcasting. Rupert Murdoch's business already owns 39.1% of BSkyB, and the takeover is an essential part of its business strategy.</p>
 :background: >-
   <p>This is the background.</p>
+:roles:
+    - :type: News Corporation owner  
+      :actor: rupert-murdoch
+    - :type: News Corporation CEO 
+      :actor: james-murdoch
+    - :type: OFCOM
+      :actor: ed-richards 
+    - :type: Minister (past)
+      :actor: vince-cable 
+    - :type: Minister (current)
+      :actor: jermey-hunt

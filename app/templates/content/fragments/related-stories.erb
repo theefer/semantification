@@ -7,7 +7,7 @@
         <% for related_story in story.get_related_stories_for(event) %>
            <article>
                <img src="<% related_story.main_image %>" />
-               <h3><a href="/story/<% story.id %>" title="<% story.synopsis %>"><% story.title %></a></h3> 
+               <h3><a href="/stories/<% story.id %>" title="<% story.synopsis %>"><% story.title %></a></h3> 
            </article>
         <% end %>
     </section>

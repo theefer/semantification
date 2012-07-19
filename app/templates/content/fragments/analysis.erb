@@ -5,10 +5,10 @@
   <% for art in event.get_articles_by_type('analysis', 1) %>
     <article> 
       <% if art.main_image %>
-        <a href="/art/<% art.id %>"><img src"<% art.main_image %>" /></a>
+        <a href="/articles/<% art.id %>"><img src"<% art.main_image %>" /></a>
       <% end %>
       <h4>
-        <a href="/art/<% art.id %>" title="<% art.synopsis %>"><% art.title %></a>
+        <a href="/articles/<% art.id %>" title="<% art.synopsis %>"><% art.title %></a>
       </h4>
       <p><% art.synopsis %></p>
     </article>

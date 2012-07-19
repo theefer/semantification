@@ -1,42 +1,10 @@
 <section id="main" class="fluid-row article">
 
-<article class="article-body col-6">
-
-<h1><%= article.title %></h1>
-
-<figure>
-  <img src="<%= article.main_image %>"/>
-  <figcaption>
-    <%= article.main_image_caption %>
-  </figcaption>
-</figure>
-
-<%= article.body_text %>
-
-
-  <% if next_articles.size > 0 %>
-  <h2>Read next</h2>
-  <ul class="article-thumb-list">
-    <% for art in next_articles %>
-    <li>
-      <a href="/article/<%= art.id %>">
-      <article class="article-thumb">
-        <img src="<%= art.main_image %>"/>
-        <div class="title"><%= art.title %></div>
-      </article>
-      </a>
-    </li>
-    <% end %>
-  </ul>
-  <% end %>
-
-</article>
-
-<aside class="col-4">
+<aside class="from-event col-3">
 
   <section class="event-box">
   <div class="hd zone-border zone-border-medium">
-    <h4 class="sub-heading"><a href="/event/<%= main_event.id %>"><%= main_event.title %></a></h4>
+    <h4 class="sub-heading"><a href="/events/<%= main_event.id %>"><%= main_event.title %></a></h4>
   </div>
   <%= main_event.synopsis %>
 
@@ -46,23 +14,55 @@
     <% for update in latest_updates %>
     <li class="latest-update">
       <span class="text"><%= AutoExcerpt.new(update[:text], :characters => 150) %></span>
-      <a href="/article/<%= update[:article].id %>#block-<%= update[:id] %>" class="date"><%= update[:date].time_ago_in_words %></a>
+      <a href="/articles/<%= update[:article].id %>#block-<%= update[:id] %>" class="date"><%= update[:date].time_ago_in_words %></a>
     </li>
     <% end %>
   </ul>
   <% end %>
 
   <% if main_actors.size > 0 %>
-  <h2>Main actors</h2>
-  <ul>
-    <% for role in main_actors %>
-    <li><%#= role.actor.full_name %> (<%#= role.type %>)</li>
-    <% end %>
-  </ul>
+      <section class="main-actors">
+          <h2>Main actors</h2>
+          <ul>
+            <% for actor in main_actors %>
+                <li>
+                    <%= actor.full_name %>
+                </li>
+            <% end %>
+          </ul>
+      </section>
   <% end %>
 
   </section>
 
+</aside>
+
+<article class="article-body col-6">
+
+  <h1><%= article.title %></h1>
+
+  <figure>
+    <img src="<%= article.main_image %>"/>
+    <figcaption>
+      <%= article.main_image_caption %>
+    </figcaption>
+  </figure>
+
+  <%= article.body_text %>
+
+  <%= Fragment.new('read-next').render(:from_article => article) %>
+
+</article>
+
+<aside class="unrelated col-3">
+
+  <!-- ad -->
+  <img src="http://offlinehbpl.hbpl.co.uk/news/OKM/849FAAFD-C098-0A5F-4492F61D3E60DDEF.jpg" class="ad" style="margin-bottom:100px"/>
+
+  <%= Fragment.new('popular-articles').render(:excluded_article => article) %>
+
+  <!-- ad -->
+  
 </aside>
 
 </section>

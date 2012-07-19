@@ -3,7 +3,7 @@
 [role="background"], [role="event"], [role="depth"] {
         -webkit-transition: .3s all ease;           
         transition: .3s all ease;           
-        width: 95%;
+        width: 90%;
         padding: 7px;
         min-height: 200px;
     }

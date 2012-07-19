@@ -1,5 +1,5 @@
 class Event
-  attr_reader :id, :title, :synopsis, :summary, :background, :location, :widgets, :date
+  attr_reader :id, :title, :synopsis, :summary, :background, :widgets, :date, :when
 
   include BackedByYaml
   set_mock_path "mock_data/events"
@@ -11,10 +11,11 @@ class Event
     @synopsis = data[:synopsis]
     @summary = data[:summary]
     @background = data[:background]
-    @location = data[:location]
+    @location_id = data[:location]
     @widgets = data[:widgets] || []
     @main_story_id = data[:main_story]
     @roles_ids = data[:roles]
+    @when = data[:when]
   end
 
   def roles
@@ -26,6 +27,10 @@ class Event
 
   def main_story
     @main_story ||= @main_story_id && Story.get_by_id(@main_story_id)
+  end
+
+  def location
+    @location ||= @location_id && Location.get_by_id(@location_id)
   end
 
   def is_live? # or active?
