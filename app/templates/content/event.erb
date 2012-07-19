@@ -103,12 +103,18 @@
   <% end %>
 
   <% if event.widgets.include?('map') %>
+  <section class="location-box">
+  <div class="hd zone-border zone-border-medium">
+    <h4 class="sub-heading"><%= event.location.name %></h4>
+  </div>
   <div id="map_canvas" style="width:100%; height: 200px"></div>
+  <p><%= event.location.description %></p>
+  </section>
   <script type="text/javascript">
   // TODO: highlight location, allow multiple maps
   var el = document.getElementById("map_canvas");
   window.onload = function() {
-    initMaps(el, <%= event.location[:lat] %>, <%= event.location[:long] %>)
+    initMaps(el, <%= event.location.lat %>, <%= event.location.long %>)
   };
   </script>
   <% end %>
