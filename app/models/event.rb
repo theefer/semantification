@@ -1,6 +1,5 @@
 class Event
-  
-  attr_reader :id, :title, :synopsis, :summary, :background, :when
+  attr_reader :id, :title, :synopsis, :summary, :background, :location, :widgets, :when
 
   include BackedByYaml
   set_mock_path "mock_data/events"
@@ -11,6 +10,9 @@ class Event
     @synopsis = data[:synopsis]
     @summary = data[:summary]
     @background = data[:background]
+    @location = data[:location]
+
+    @widgets = data[:widgets] || []
 
     @main_story_id = data[:main_story]
     @roles_ids = data[:roles]
@@ -32,6 +34,7 @@ class Event
   end
 
   def is_latest_event_in_story?
+    
   end
 
   def main_image
@@ -44,6 +47,8 @@ class Event
         map {|upd| upd[:date] = Time.parse(upd[:date]); upd}.
         # hack: inject article to explicit the source
         map {|upd| upd[:article] = liveblog; upd}
+    else
+      []
     end
   end
 
@@ -54,6 +59,7 @@ class Event
   end
 
   def extract_related_quote
+    
   end
 
   def get_all_articles(limit=nil)

@@ -6,8 +6,7 @@ class Actor
 
   def initialize(id, data)
     @id = id
-    @first_name = data[:first_name]
-    @last_name = data[:last_name]
+    @name = data[:first_name]
     @bio = data[:bio]
     @image = data[:image]
     # more stuff
