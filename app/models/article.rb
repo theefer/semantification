@@ -52,14 +52,15 @@ class Article
   def extract_main_actors(limit)
     # TODO: parse?
     #body_text.scan(/<span class="gu-ref.*" data-ref-id="(.*?)">.*?<\/span>/)
-    key_references.map do | ref |
+    actors = key_references.map do | ref |
       case ref
       when Actor
         ref
       else
         nil
       end 
-    end.compact!
+    end.compact
+    actors || []
   end
 
   def ==(other)
