@@ -42,7 +42,8 @@ body {
 
 .article-thumb {
   position: relative;
-  display: inline-block;
+  float: left;
+  margin-right: 10px;
 }
 
 .article-thumb img {
