@@ -53,7 +53,8 @@ get '/event/:id' do
   page.render({ :event => event,
                 :main_story => main_story,
                 :all_articles => all_articles,
-                :concept_widgets => concept_widgets
+                :concept_widgets => concept_widgets,
+                :previous_events => previous_events
               })
 end
 
