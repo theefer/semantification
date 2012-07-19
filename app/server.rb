@@ -10,17 +10,18 @@ set :public_folder, 'app/public'
 get '/' do
   # Hacky index of all articles on the root page
   all_articles = Article.filter({})
-  "<ul>" + all_articles.map {|a| "<li><a href=\"/article/#{a.id}\">#{a.title}</a></li>"}.join + "</ul>"
+  "<ul>" + all_articles.map {|a| "<li><a href=\"/articles/#{a.id}\">#{a.title}</a></li>"}.join + "</ul>"
 end
 
 
-get '/story/:id' do
-  id = params[:id]
+get '/stories/:id' do
+  id, format = params[:id].scan(/^([^.]+)(?:\.(.+))?$/)[0]
   # render STORY
 end
 
-get '/event/:id' do
-  id = params[:id]
+get '/events/:id' do
+  id, format = params[:id].scan(/^([^.]+)(?:\.(.+))?$/)[0]
+
   event = Event.get_by_id(id)
   main_image = event.main_image
   background = event.background
@@ -50,16 +51,23 @@ get '/event/:id' do
 
   # render EVENT
   page = Page.new('event')
-
-  page.render({ :event => event,
-                :main_story => main_story,
-                :all_articles => all_articles,
-                :concept_widgets => concept_widgets
-              })
+  data = {
+    :event => event,
+    :main_story => main_story,
+    :all_articles => all_articles,
+    :concept_widgets => concept_widgets
+  }
+  case params[:format]
+  when 'ahah'
+    page.render_content(data)
+  else
+    page.render(data)
+  end
 end
 
-get '/article/:id' do
-  id = params[:id]
+get '/articles/:id' do
+  id, format = params[:id].scan(/^([^.]+)(?:\.(.+))?$/)[0]
+
   article = Article.get_by_id(id) or halt 404
   main_story = article.main_story
   main_event = article.main_event
@@ -76,12 +84,22 @@ get '/article/:id' do
 
   # render ARTICLE
   page = Page.new('article')
-  page.render({ :article    => article,
-                :main_event => main_event,
-                :main_story => main_story,
-                :main_actors => main_actors,
-                :next_articles => next_articles,
-                :latest_updates => latest_updates })
+  data = {
+    :article    => article,
+    :main_event => main_event,
+    :main_story => main_story,
+    :main_actors => main_actors,
+    :next_articles => next_articles,
+    :latest_updates => latest_updates
+  }
+  case format
+  when 'ahah'
+    page.render_content(data)
+  when nil, 'html'
+    page.render(data)
+  else
+    halt 404
+  end
 end
 
 
@@ -89,26 +107,26 @@ end
 
 # Or an API?
 
-get '/api/story/:id' do
+get '/api/stories/:id' do
   id = params[:id]
   story = Story.get_by_id(id) or halt 404
   story_data = story.data
   data = story_data.merge({
-    :uri => "/api/story/#{story_data[:id]}",
+    :uri => "/api/stories/#{story_data[:id]}",
     :links => [{:rel => 'main_actors',
-                :href => "/api/story/#{story_data[:id]}/main_actors"}]
+                :href => "/api/stories/#{story_data[:id]}/main_actors"}]
   })
 
   content_type "application/json"
   data.to_json
 end
 
-get '/api/story/:id/main_actors' do
+get '/api/stories/:id/main_actors' do
   id = params[:id]
   story = Story.get_by_id(id) or halt 404
   story_data = story.data
   data = story_data.merge({
-                            :uri => "/api/story/#{story_data[:id]}",
+                            :uri => "/api/stories/#{story_data[:id]}",
                             :links => [{:rel => '', :href => ''}
                                       ]
   })

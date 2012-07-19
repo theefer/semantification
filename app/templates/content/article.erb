@@ -19,7 +19,7 @@
   <ul class="article-thumb-list">
     <% for art in next_articles %>
     <li>
-      <a href="/article/<%= art.id %>">
+      <a href="/articles/<%= art.id %>">
       <article class="article-thumb">
         <img src="<%= art.main_image %>"/>
         <div class="title"><%= art.title %></div>
@@ -36,7 +36,7 @@
 
   <section class="event-box">
   <div class="hd zone-border zone-border-medium">
-    <h4 class="sub-heading"><a href="/event/<%= main_event.id %>"><%= main_event.title %></a></h4>
+    <h4 class="sub-heading"><a href="/events/<%= main_event.id %>"><%= main_event.title %></a></h4>
   </div>
   <%= main_event.synopsis %>
 
@@ -46,7 +46,7 @@
     <% for update in latest_updates %>
     <li class="latest-update">
       <span class="text"><%= AutoExcerpt.new(update[:text], :characters => 150) %></span>
-      <a href="/article/<%= update[:article].id %>#block-<%= update[:id] %>" class="date"><%= update[:date].time_ago_in_words %></a>
+      <a href="/articles/<%= update[:article].id %>#block-<%= update[:id] %>" class="date"><%= update[:date].time_ago_in_words %></a>
     </li>
     <% end %>
   </ul>
