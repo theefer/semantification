@@ -20,18 +20,16 @@ role :web, location
 role :db,  location, :primary => true
 
 set :user, "ec2-user"
-# ssh_options[:keys] = [File.join(Dir.pwd, "dis2.pem")] 
-# ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")] 
 
 
 namespace :nginx do
   task :start do
-    run "/etc/init.d/nginx start"
+    run "sudo /etc/init.d/nginx start"
   end
   task :stop do
-    run "/etc/init.d/nginx stop"
+    run "sudo /etc/init.d/nginx stop"
   end
   task :restart do
-    run "/etc/init.d/nginx restart"
+    run "sudo /etc/init.d/nginx restart"
   end
 end
