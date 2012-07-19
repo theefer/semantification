@@ -81,7 +81,7 @@
 <h2>Articles</h2>
 <ul>
 <% for art in all_articles %>
-  <li><a href="/article/<%= art.id %>"><%= art.title %></a></li>
+  <li><a href="/articles/<%= art.id %>"><%= art.title %></a></li>
 <% end %>
 </ul>
 <% end %>
@@ -96,7 +96,7 @@
   <% if main_story %>
   <section class="story-box">
   <div class="hd zone-border zone-border-medium">
-    <h4 class="sub-heading"><a href="/story/<%= main_story.id %>"><%= main_story.title %></a></h4>
+    <h4 class="sub-heading"><a href="/stories/<%= main_story.id %>"><%= main_story.title %></a></h4>
   </div>
   <%= main_story.synopsis %>
   </section>

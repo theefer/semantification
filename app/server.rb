@@ -10,16 +10,16 @@ set :public_folder, 'app/public'
 get '/' do
   # Hacky index of all articles on the root page
   all_articles = Article.filter({})
-  "<ul>" + all_articles.map {|a| "<li><a href=\"/article/#{a.id}\">#{a.title}</a></li>"}.join + "</ul>"
+  "<ul>" + all_articles.map {|a| "<li><a href=\"/articles/#{a.id}\">#{a.title}</a></li>"}.join + "</ul>"
 end
 
 
-get '/story/:id' do
+get '/stories/:id' do
   id = params[:id]
   # render STORY
 end
 
-get '/event/:id' do
+get '/events/:id' do
   id = params[:id]
   event = Event.get_by_id(id)
   main_image = event.main_image
@@ -58,7 +58,7 @@ get '/event/:id' do
               })
 end
 
-get '/article/:id' do
+get '/articles/:id' do
   id = params[:id]
   article = Article.get_by_id(id) or halt 404
   main_story = article.main_story
@@ -89,26 +89,26 @@ end
 
 # Or an API?
 
-get '/api/story/:id' do
+get '/api/stories/:id' do
   id = params[:id]
   story = Story.get_by_id(id) or halt 404
   story_data = story.data
   data = story_data.merge({
-    :uri => "/api/story/#{story_data[:id]}",
+    :uri => "/api/stories/#{story_data[:id]}",
     :links => [{:rel => 'main_actors',
-                :href => "/api/story/#{story_data[:id]}/main_actors"}]
+                :href => "/api/stories/#{story_data[:id]}/main_actors"}]
   })
 
   content_type "application/json"
   data.to_json
 end
 
-get '/api/story/:id/main_actors' do
+get '/api/stories/:id/main_actors' do
   id = params[:id]
   story = Story.get_by_id(id) or halt 404
   story_data = story.data
   data = story_data.merge({
-                            :uri => "/api/story/#{story_data[:id]}",
+                            :uri => "/api/stories/#{story_data[:id]}",
                             :links => [{:rel => '', :href => ''}
                                       ]
   })
