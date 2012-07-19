@@ -7,6 +7,8 @@ USER = 'you'
 # static assets in /public
 set :public_folder, 'app/public'
 
+set :protection, :except => :json_csrf
+
 get '/' do
   # Hacky index of all articles on the root page
   all_articles = Article.filter({})
