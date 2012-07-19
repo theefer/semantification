@@ -1,0 +1,16 @@
+<% next_articles = RECOMMENDATION_SERVICE.find_next_articles(from_article, USER, 4) %>
+<% if next_articles.size > 0 %>
+<h2>Read next</h2>
+<ul class="article-thumb-list">
+  <% for art in next_articles %>
+ <li>
+    <a href="/articles/<%= art.id %>">
+    <article class="article-thumb">
+      <img src="<%= art.main_image %>"/>
+      <div class="title"><%= art.title %></div>
+    </article>
+    </a>
+  </li>
+  <% end %>
+</ul>
+<% end %>

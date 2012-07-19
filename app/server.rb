@@ -78,9 +78,6 @@ get '/articles/:id' do
 
   quote = main_event.extract_related_quote
 
-  next_articles = RECOMMENDATION_SERVICE.find_next_articles(article, USER, 4)
-  popular_articles = TRENDING_SERVICE.popular_articles(article, USER, 4)
-
   trending_items = TRENDING_SERVICE.get_top_items(3)
 
   # render ARTICLE
@@ -90,8 +87,6 @@ get '/articles/:id' do
     :main_event => main_event,
     :main_story => main_story,
     :main_actors => main_actors,
-    :next_articles => next_articles,
-    :popular_articles => popular_articles,
     :latest_updates => latest_updates
   }
   case format
