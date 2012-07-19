@@ -116,6 +116,12 @@
   <%= Fragment.new('concept').render(:concept => concept) %>
   <% end %>
 
+  <% if previous_events.size > 0%>
+  <h2>Previous events in this story</h2>
+	<% for event in previous_events%>
+		<a href="/event/<%= event.id %>"> <%= event.id%></a>
+	<% end %>
+  <% end %>
 </aside>
 -->
 

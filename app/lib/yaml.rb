@@ -24,6 +24,7 @@ class YamlStorage < Storage
     item_ids.
       # FIXME: correctly map id
       map {|id| [id, YAML.load_file("#{@root_dir}/#{id}.yml")]}.
+      select {|id, data| data}.
       select {|id, data| matcher.all? {|key, val| data[key] == val} }
   end
 end

@@ -1,19 +1,18 @@
 class Event
-  attr_reader :id, :title, :synopsis, :summary, :background, :widgets, :when
+  attr_reader :id, :title, :synopsis, :summary, :background, :widgets, :date, :when
 
   include BackedByYaml
   set_mock_path "mock_data/events"
 
   def initialize(id, data)
     @id = id
+    @date = data[:date]
     @title = data[:title]
     @synopsis = data[:synopsis]
     @summary = data[:summary]
     @background = data[:background]
     @location_id = data[:location]
-
     @widgets = data[:widgets] || []
-
     @main_story_id = data[:main_story]
     @roles_ids = data[:roles]
     @when = data[:when]

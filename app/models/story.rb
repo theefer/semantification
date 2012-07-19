@@ -16,8 +16,13 @@ class Story
     @background = data[:background]
   end
 
-  def events_before(event)
-    
+  def events_before(event, limit=nil)
+    all_events = Event.filter({:main_story => self.id}, limit)
+    all_events.select do | e |
+      event_date = Time.parse(event.date)
+      e_date = Time.parse(e.date)
+      e_date > event_date
+    end   
   end
 
   def get_related_stories_for(event)
