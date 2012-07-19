@@ -1,14 +1,12 @@
 <section class="key-events">
     <div class="story-title">BSkyB Bid<%# story.title %></div>
     <ul>
-        <% for ev in event.main_story.events %>
-        <li class="event <%= ev.id == event.id ? 'current' : '' %>">
+        <% for ev in story.events %>
+        <li class="event <%= ev.id == current_event.id ? 'current' : '' %>">
             <span class="title"><%= ev.title %></span>
             <time><%= Time.parse(ev.date).strftime('%e %b, %Y') %></time>
         </li>
         <% end %>
-<!--
-        <li class="event ellipsis">&hellip;</li>
--->
+<%#     <li class="event ellipsis">&hellip;</li> %>
     </ul>
 </section>

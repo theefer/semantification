@@ -43,7 +43,7 @@
 
 <!-- sorry - need to chat about this tomorrow :) 
 <% if event.main_story %>
-<%= Fragment.new('key-events').render(:story => event.main_story) %>
+<%= Fragment.new('key-events').render(:story => event.main_story, :current_event => event) %>
 <% end %>
 -->
 
