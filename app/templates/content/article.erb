@@ -13,7 +13,7 @@
   <ul>
     <% for update in latest_updates %>
     <li class="latest-update">
-      <span class="text"><%= AutoExcerpt.new(update[:text], :characters => 150) %></span>
+      <span class="text"><%= AutoExcerpt.new(update[:text], :characters => 150, :strip_html => true, :allowed_tags => ['p']) %></span>
       <a href="/articles/<%= update[:article].id %>#block-<%= update[:id] %>" class="date"><%= update[:date].time_ago_in_words %></a>
     </li>
     <% end %>
