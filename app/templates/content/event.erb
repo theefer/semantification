@@ -3,29 +3,41 @@
  ...
 </section>
 
+<img 
+    src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2011/5/10/1305036701106/Milly-Dowler-007.jpg"
+    id="hero" />
+    
 <section id="main" class="fluid-row event" role="event">
 
 <article class="event-main col-8">
 
 <h1><%= event.title %></h1>
 
-<!-- 
-<img 
-    src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2011/5/10/1305036701106/Milly-Dowler-007.jpg"
-    id="hero"
-/>
--->
+<p class="when">
+    <b>When</b>: <%= event.when %> <!-- --> 
+</p>
+
 
 <aside id="background">
     <h2>Summary</h2>
     <%= event.summary %>
 </aside>
 
+<blockquote class="col-4">
+    <span class="bqstart">“</span>
+    <span class="quote">
+        We need those messages as evidence. Anybody who destroys that evidence is seriously interfering with the course of a police investigation.
+    </span>
+    <span class="bqend">”</span>
+</blockquote>
+
+
 <aside>
     <h2>Since your last visit</h2>
     <%= event.summary %>
 </aside>
 
+<!-- 
 <div class="arrow_box"
         onclick="document.getElementsByTagName('body')[0].className='active';">
     <h2>Understand the Impact</h2>
@@ -35,6 +47,7 @@
         - News International bid for BSkyB 
     </p>
 </div>
+-->
 
 <aside id="characters">
     <h2>Characters</h2>
@@ -96,7 +109,7 @@
 
 </section>
 
-<section class="fluid-row" role="depth">
+<section role="depth">
  ... 
 </section>
 

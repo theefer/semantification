@@ -1,0 +1,47 @@
+/* undo pasteup */
+
+blockquote {
+   font-family: 'Merriweather', serif;
+   border-left-width: 0px;
+   font-size: 33px; 
+   line-height: 28px;
+   position: relative;
+}
+
+blockquote .quote {
+    position: relative;
+    z-index: 10;
+}
+
+.bqstart, .bqend {
+   font-family: serif;
+   font-size: 15px;
+   opacity: 0.5; 
+   z-index: 0;
+}
+
+.bqstart {
+        position: absolute;
+        top: 0; 
+        left: -10px;
+        float: left;
+              height: 45px;
+                   margin-top: -20px;
+                        padding-top: 45px;
+                             margin-bottom: -50px;
+                                  font-size: 700%;
+                                       color: #FF0000;
+                                        }
+
+
+                                         .bqend {
+                                                display: none;
+                                                  float: right;
+                                                       height: 25px;
+                                                            margin-top: 0px;
+                                                                 padding-top: 45px;
+                                                                      font-size: 700%;
+                                                                           color: #FF0000;
+                                                                            }
+
+

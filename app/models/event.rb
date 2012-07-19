@@ -1,5 +1,5 @@
 class Event
-  attr_reader :id, :title, :synopsis, :summary, :background, :location, :widgets
+  attr_reader :id, :title, :synopsis, :summary, :background, :location, :widgets, :when
 
   include BackedByYaml
   set_mock_path "mock_data/events"
@@ -16,6 +16,7 @@ class Event
 
     @main_story_id = data[:main_story]
     @roles_ids = data[:roles]
+    @when = data[:when]
   end
 
   def roles
