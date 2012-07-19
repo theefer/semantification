@@ -25,34 +25,36 @@ get '/event/:id' do
   main_image = event.main_image
   background = event.background
 
-  latest_updates = event.latest_updates
+  latest_updates = event.latest_updates(5)
 
   main_story = event.main_story # stories?
-  previous_events = main_story.events_before(event)
-  # and next, when not on latest event
+  if main_story
+    previous_events = main_story.events_before(event)
+    # and next, when not on latest event
 
-  # TODO: determine:
-  # - is the event live/current
-  # - is the event the most recent in its story
+    related_stories = main_story.get_related_stories_for(event) # i.e. not the main story?
+  end
 
-  related_stories = main_story.get_related_stories_for(event) # i.e. not the main story?
-  
-
-  live_articles = event.find_live_articles
+  live_article = event.find_live_article
   quote = event.extract_related_quote
 
-  all_articles = event.get_articles_by_type('article', 2)
-  opinion_articles = event.get_articles_by_type(:opinion, 2)
+  all_articles = event.get_all_articles
+  opinion_articles = event.get_articles_by_type('opinion', 2)
 
   # get impact on you articles?
   # get in depth articles?
   # get whatever man?
 
+  # ad-hoc :'-(
+  concept_widgets = event.widgets.map {|name| name.scan(/definition\/(.*)/)}.flatten.compact.map {|concept_name| Concept.get_by_id(concept_name)}
+
   # render EVENT
   page = Page.new('event')
   page.render({ :event => event,
                 :main_story => main_story,
-                :all_articles => all_articles })
+                :all_articles => all_articles,
+                :concept_widgets => concept_widgets
+              })
 end
 
 get '/article/:id' do
@@ -61,7 +63,7 @@ get '/article/:id' do
   main_story = article.main_story
   main_event = article.main_event
   related_events = article.secondary_events
-  latest_updates = main_event.latest_updates
+  latest_updates = main_event.latest_updates(5)
 
   main_actors = article.extract_main_actors(3)
 
@@ -77,7 +79,8 @@ get '/article/:id' do
                 :main_event => main_event,
                 :main_story => main_story,
                 :main_actors => main_actors,
-                :next_articles => next_articles })
+                :next_articles => next_articles,
+                :latest_updates => latest_updates })
 end
 
 

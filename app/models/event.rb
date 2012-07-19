@@ -1,5 +1,5 @@
 class Event
-  attr_reader :id, :title, :synopsis, :summary, :background
+  attr_reader :id, :title, :synopsis, :summary, :background, :location, :widgets
 
   include BackedByYaml
   set_mock_path "mock_data/events"
@@ -10,6 +10,9 @@ class Event
     @synopsis = data[:synopsis]
     @summary = data[:summary]
     @background = data[:background]
+    @location = data[:location]
+
+    @widgets = data[:widgets] || []
 
     @main_story_id = data[:main_story]
     @roles_ids = data[:roles]
@@ -36,19 +39,33 @@ class Event
   def main_image
   end
 
-  def latest_updates
-    []
+  def latest_updates(limit)
+    if liveblog = find_live_article
+      updates = liveblog.body[0..limit]
+      updates.
+        map {|upd| upd[:date] = Time.parse(upd[:date]); upd}.
+        # hack: inject article to explicit the source
+        map {|upd| upd[:article] = liveblog; upd}
+    else
+      []
+    end
   end
 
-  def find_live_articles
-    # or not, if none
+  # return a live article (or nil if none)
+  def find_live_article
+    live_articles = get_articles_by_type('liveblog', 3)
+    live_articles.find(&:is_live?)
   end
 
   def extract_related_quote
     
   end
 
-  def get_articles_by_type(type, limit)
-    articles = Article.filter({:main_event => self.id, :type => type}, limit)
+  def get_all_articles(limit=nil)
+    Article.filter({:main_event => self.id}, limit)
+  end
+
+  def get_articles_by_type(type, limit=nil)
+    Article.filter({:main_event => self.id, :type => type}, limit)
   end
 end

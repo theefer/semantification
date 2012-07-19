@@ -5,6 +5,8 @@ require 'sinatra'
 require 'erubis'
 require 'yaml'
 require 'json'
+require 'time-ago-in-words'
+require 'auto_excerpt'
 
 # libs 
 
@@ -18,6 +20,7 @@ require 'app/models/story'
 require 'app/models/actor'
 require 'app/models/page'
 require 'app/models/role'
+require 'app/models/concept'
 
 # services
 

@@ -4,7 +4,15 @@
   <link rel="stylesheet" href="/main-16px.css" type="text/css"/>
   <link rel="stylesheet" href="/styles/pasteup.min.css" type="text/css"/>
   <link rel="stylesheet" href="/styles/base.css" type="text/css"/>
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+  <link rel="stylesheet" href="/styles/off-canvas.css" type="text/css"/>
+  <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300' rel='stylesheet' type='text/css'>
+  <script type="text/javascript"
+          src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBslVTUmzJUbN6LGrXhUAb6nHKEFXHSds8&sensor=false"></script>
+  <!-- Note: guys, this is my key, so don't fuck with it please. ta! -->
+  <script type="text/javascript" src="/scripts/init-maps.js"></script>
 </head>
+
 <body class="fluid-wrap">
 
 <header class="site-head">
@@ -19,6 +27,33 @@
 		<li class="zone-culture"><a href="/" class="zone-color zone-background-hover">Culture</a></li>
 	</ul>
 </nav>
+
+<script>
+var tabDeselect = function(){
+var tabs = document.querySelectorAll('.navigation li')
+for (var i = 0; i < tabs.length; ++i) {  
+tabs[i].className = '';
+};
+}
+var loc = document.location;
+
+window.onkeypress = function(evt){
+    var key = evt.charCode || evt.keyCode;
+    console.log(key);
+    switch (key) {
+        case 113:
+            document.getElementsByTagName('body')[0].className='active';
+            break;
+        case 119:
+            document.getElementsByTagName('body')[0].className='fluid-row event';
+            break;
+        case 101:
+            document.getElementsByTagName('body')[0].className='depth';
+            break;
+    }
+}
+
+</script>
 
 <%= content %>
 

@@ -11,7 +11,7 @@
   </figcaption>
 </figure>
 
-<%= article.body %>
+<%= article.body_text %>
 
 
   <% if next_articles.size > 0 %>
@@ -40,11 +40,14 @@
   </div>
   <%= main_event.synopsis %>
 
-  <% if main_event.latest_updates.size > 0 %>
+  <% if latest_updates.size > 0 %>
   <h2>Latest updates</h2>
   <ul>
-    <% for update in main_event.latest_updates %>
-    <li><%= update.title %></li>
+    <% for update in latest_updates %>
+    <li class="latest-update">
+      <span class="text"><%= AutoExcerpt.new(update[:text], :characters => 150) %></span>
+      <a href="/article/<%= update[:article].id %>#block-<%= update[:id] %>" class="date"><%= update[:date].time_ago_in_words %></a>
+    </li>
     <% end %>
   </ul>
   <% end %>
