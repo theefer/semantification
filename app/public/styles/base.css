@@ -68,3 +68,48 @@ body {
 .latest-update .date {
   float: right;
 }
+
+
+/* TODO: use container row for this */
+.key-events {
+  float: left;
+}
+
+.key-events {
+  background-color: #ddd;
+  border: 1px solid #bbb;
+  width: 100px;
+}
+.key-events ul {
+  list-style-type: none;
+  padding: 0; margin: 0;
+}
+
+.key-events .story-title {
+  font-weight: bold;
+  margin: -1px -10px;
+  background-color: #999;
+  border: 1px solid #bbb;
+  padding: 10px;
+}
+
+.key-events .event {
+  border-top: 1px solid #bbb;
+  padding: 5px 10px;
+}
+.key-events .event.current {
+  background-color: #999;
+}
+.key-events .event.ellipsis {
+  background-color: #eee;
+  text-align: center;
+}
+
+.key-events .event time {
+  display: block;
+  text-align: right;
+  color: #666;
+}
+.key-events .event .title {
+  display: block;
+}
