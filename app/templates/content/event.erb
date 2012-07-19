@@ -1,6 +1,12 @@
 
-<section role="background">
- ...
+<section class="fluid-row" role="background">
+    <div id="lead">
+        <div class="leadin"></div>
+    </div>
+    <h1>Background</h1>
+
+
+    <img src="http://www.visit4ads.com/sitecontent/LG/fullZZZZZZPRW080302195120PIC.jpg"/>
 </section>
 
 <img 
@@ -9,7 +15,7 @@
     
 <section id="main" class="fluid-row event" role="event">
 
-<article class="event-main col-8">
+<article class="event-main">
 
 <h1><%= event.title %></h1>
 
@@ -17,13 +23,12 @@
     <b>When</b>: <%= event.when %> <!-- --> 
 </p>
 
-
 <aside id="background">
     <h2>Summary</h2>
     <%= event.summary %>
 </aside>
 
-<blockquote class="col-4">
+<blockquote class="col-5">
     <span class="bqstart">“</span>
     <span class="quote">
         We need those messages as evidence. Anybody who destroys that evidence is seriously interfering with the course of a police investigation.
@@ -34,29 +39,26 @@
 
 <aside>
     <h2>Since your last visit</h2>
-    <%= event.summary %>
+    <ul>
+        <li>aaaaaaaaaaa</li>
+        <li>aaaaaaaaaaa</li>
+        <li>aaaaaaaaaaa</li>
+        <li>aaaaaaaaaaa</li>
+    </ul> 
 </aside>
 
-<!-- 
-<div class="arrow_box"
-        onclick="document.getElementsByTagName('body')[0].className='active';">
-    <h2>Understand the Impact</h2>
-    <p>
-        - Phone Hacking
-        - Murder of Milly Dowler
-        - News International bid for BSkyB 
-    </p>
-</div>
--->
-
 <aside id="characters">
-    <h2>Characters</h2>
+    <!-- <h2>Characters</h2>
     <img src="http://news.bbcimg.co.uk/media/images/54023000/jpg/_54023105_murdoch_reuters_238.jpg" />
     <img src="http://news.bbcimg.co.uk/media/images/50975000/jpg/_50975432_wade_afp.jpg" />
     <img src="http://news.bbcimg.co.uk/media/images/54023000/jpg/_54023097_jamesmurdoch_ap.jpg"/>
     <img src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2011/5/10/1305036701106/Milly-Dowler-007.jpg"/>
-</aside>
+    -->
+    </aside>
 
+<div id="reaction">
+    <h2>Reaction</h2>
+</div>
 
 <% if all_articles.size > 0 %>
 <h2>Articles</h2>
@@ -71,7 +73,7 @@
 
 </article>
 
-
+<!-- 
 <aside class="widgets col-4">
 
   <% if main_story %>
@@ -104,12 +106,15 @@
   <% end %>
 
 </aside>
+-->
 
 </article>
 
 </section>
 
 <section role="depth">
- ... 
+    <div id="box">
+    
+    </div>
 </section>
 
