@@ -25,6 +25,13 @@ class Story
     end   
   end
 
+  def events
+    all_events = Event.filter({:main_story => self.id})
+    all_events.sort do |a, b|
+      Time.parse(a.date) <=> Time.parse(b.date)
+    end   
+  end
+
   def get_related_stories_for(event)
     
   end
