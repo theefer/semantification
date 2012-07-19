@@ -2,6 +2,14 @@ body {
     background-color: white;
 }
 
+aside p, aside li {
+    line-height: 170%;
+}
+
+aside li { 
+    padding-top: 1em;
+}
+
 #logo {
   background: url(/images/guardian_logo.gif) no-repeat;
   width: 115px;
@@ -72,7 +80,7 @@ body {
 
 /* TODO: use container row for this */
 .key-events {
-    margin-top: 150px;
+    margin-top: 88px;
     float: left;
 }
 
@@ -102,6 +110,7 @@ body {
   text-align: center;
 }
 
+
 .key-events .event time {
   display: block;
   text-align: right;
@@ -111,3 +120,11 @@ body {
 .key-events .event .title {
   display: block;
 }
+
+/* advert */
+
+#advert {
+    width: 100%;
+    margin-top: 14px;
+} 
+
