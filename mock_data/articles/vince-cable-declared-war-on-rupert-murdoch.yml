@@ -8,11 +8,11 @@
 :main_event: vince-cable-declared-war-on-rupert-murdoch
 :body: >-
   <p><span class="gu-ref actor actor-person" data-ref-id="actor:newscorp-bid-for-bskyb/roletype?/vince-cable">Vince Cable</span>'s career was hanging in the balance today after it was revealed that the business secretary told two undercover reporters he had "declared war" on <span class="gu-ref actor actor-person">Rupert Murdoch</span> and said: "I think we are going to win."</p>
-  <p>His Labour shadow, John Denham, said the business secretary's comments, which referred to his intervention on public interest grounds in <span class="gu-ref actor actor-organisation">News Corporation</span>'s bid for full control of <span class="gu-ref actor actor-organisation">BSkyB</span>, should raise "grave doubts" for the prime minister, David Cameron, over Cable's integrity and judgment.</p>
-  <p>Denham said Cable should go. "It is very difficult to see how David Cameron and Nick Clegg can continue to have confidence in him as business secretary," he said.</p>
-  <p>While a Lib Dem peer insisted that Cable would stay in his post, there were reports that Cable was called in to see the prime minister after Robert Peston of the BBC revealed in full Cable's comments, parts of which had not been published by the Telegraph.</p>
+  <p>His Labour shadow, John Denham, said the business secretary's comments, which referred to his intervention on public interest grounds in <span class="gu-ref actor actor-organisation">News Corporation</span>'s bid for full control of <span class="gu-ref actor actor-organisation">BSkyB</span>, should raise "grave doubts" for the prime minister, <span class="gu-ref actor actor-person" data-ref="actor:newscorp-bid-for-bskyb/roletype?/david-cameron">David Cameron</span>, over Cable's integrity and judgment.</p>
+  <p>Denham said Cable should go. "It is very difficult to see how David Cameron and <span class="gu-ref actor actor-person" data-ref-id="actor:newscorp-bid-for-bskyb/roletype?/nick-clegg">Nick Clegg</span> can continue to have confidence in him as business secretary," he said.</p>
+  <p>While a Lib Dem peer insisted that Cable would stay in his post, there were reports that Cable was called in to see the prime minister after Robert Peston of the BBC revealed in full Cable's comments, parts of which had not been published by <span class="gu-ref actor actor-organisation" data-ref-id="actor:newscorp-bid-for-bskyb/roletype?/telegraph">the Telegraph.</span></p>
   <p>According to Peston, Cable was recorded telling the reporters, who posed as constituents: "I am picking my fights, some of which you may have seen, some of which you may haven't seen [sic]. And I don't know if you have been following what has been happening with the Murdoch press, where I have declared war on Mr Murdoch and I think we are going to win."</p>
-  <p>The remarks appeared to prejudge the outcome of Ofcom's investigation into whether the bid should be investigated on media plurality grounds, which was ordered by Cable. Ofcom is due to report by the end of the year.</p>
+  <p>The remarks appeared to prejudge the outcome of <span class="gu-ref actor actor-organisation" data-ref-id="actor:newscorp-bid-for-bskyb/roletype?/ofcom">Ofcom's</span> investigation into whether the bid should be investigated on media plurality grounds, which was ordered by Cable. Ofcom is due to report by the end of the year.</p>
   <p>News Corp was quick to condemn the comments. A spokeswoman said: "News Corp is shocked and dismayed by reports of Mr Cable's comments. They raise serious questions about fairness and due process."</p>
   <p>New Corp is believed to have been encouraged earlier today by the European Commission's decision to clear the bid on competition grounds.</p>
   <p>Peston told the BBC News channel: "It's extremely clear that News Corp will say categorically that he [Cable] cannot now make the decision on this takeover. If he can't, either they have to find a mechanism for someone else to make the decision or he has to resign. Those are the only options for Mr Cable. He has to do quite a lot of explaining quite quickly."</p>
@@ -30,3 +30,14 @@
   <p>"It's not him that will make the recommendation. It's a totally independent body, Ofcom, who will make the recommendation that I assume he will follow."</p>
   <p>The peer added: "If I was News Corp or BSkyB, I would think this means there is going to be an even more objective look at the decision than otherwise because the one thing that will be absolutely clear is that he cannot be shown to show any bias against them, particularly in view of what he's said."</p>
   <p>But Denham said Cable must "immediately step aside "from any involvement with the decision on News Corp's bid to take total control of BSkyB. Every company - big or small - that comes up in front of the competition authorities has a right to know that their case will be heard dispassionately and judged on its merits. Vince Cable, with these extraordinary remarks, has clearly shown he is unable to do that."</p>
+:key_references: 
+    - :type: actor
+      :id: rupert-murdoch
+    - :type: actor
+      :id: vince-cable
+    - :type: actor
+      :id: david-cameron
+    - :type: actor
+      :id: nick-clegg
+    - :type: event
+      :id: news-corporation-announce-bskyb-takeover

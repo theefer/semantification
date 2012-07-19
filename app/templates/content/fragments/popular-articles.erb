@@ -1,0 +1,16 @@
+<% popular_articles = TRENDING_SERVICE.popular_articles(excluded_article, USER, 4) %>
+<% if popular_articles.size > 0 %>
+<h2>Other popular articles</h2>
+<ul class="article-thumb-list">
+  <% for art in popular_articles %>
+  <li>
+    <a href="/articles/<%= art.id %>">
+    <article class="article-thumb">
+      <img src="<%= art.main_image %>"/>
+      <div class="title"><%= art.title %></div>
+    </article>
+    </a>
+  </li>
+  <% end %>
+</ul>
+<% end %>

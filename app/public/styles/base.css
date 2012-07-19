@@ -50,7 +50,9 @@ aside li {
 
 .article-thumb {
   position: relative;
-  display: inline-block;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .article-thumb img {
@@ -128,3 +130,6 @@ aside li {
     margin-top: 14px;
 } 
 
+section.main-actors {
+  clear:both;
+}

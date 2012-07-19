@@ -1,19 +1,19 @@
 class Actor
-  attr_reader :first_name, :last_name
 
+  attr_reader :id, :bio, :image 
   include BackedByYaml
   set_mock_path "mock_data/actors"
 
   def initialize(id, data)
     @id = id
-    @name = data[:first_name]
+    @name = data[:name]
     @bio = data[:bio]
     @image = data[:image]
     # more stuff
   end
 
   def full_name
-    "#{first_name} #{last_name}"
+    @name
   end
 end
 
