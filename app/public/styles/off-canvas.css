@@ -3,7 +3,7 @@
 [role="background"], [role="event"], [role="depth"] {
         -webkit-transition: .3s all ease;           
         transition: .3s all ease;           
-        width: 90%;
+        width: 98%;
         padding: 7px;
         min-height: 200px;
     }
@@ -33,7 +33,7 @@
 
 }
 .active [role="depth"] {    
- margin-right: -100%;
+ margin-right: -200%;
  float: right;       
 }
 
