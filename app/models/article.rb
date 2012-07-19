@@ -14,6 +14,7 @@ class Article
     @published_date = data[:published_date]
     @main_image = data[:main_image]
     @main_image_caption = data[:main_image_caption]
+    @key_references = data[:key_references] || []
 
     @main_event_id = data[:main_event]
   end
@@ -55,5 +56,24 @@ class Article
 
   def ==(other)
     self.class == other.class && self.id == other.id
+  end
+
+  def key_references
+    @key_references.map do |ref|
+        type = ref[:type]
+        refname = ref[:id]
+        # ref.scan(/(.*):(.*)/) do |type, refname|
+        type_map = {
+           'event' => Event,
+           'actor' => Actor,
+           'concept' => Concept,
+           'organisation' => Actor
+        }
+        if type
+            klass = type_map[type]
+            p klass.get_by_id(refname) 
+            klass.get_by_id(refname)
+        end
+    end.select {|ref| ref}
   end
 end

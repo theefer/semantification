@@ -30,10 +30,14 @@
   <p>"It's not him that will make the recommendation. It's a totally independent body, Ofcom, who will make the recommendation that I assume he will follow."</p>
   <p>The peer added: "If I was News Corp or BSkyB, I would think this means there is going to be an even more objective look at the decision than otherwise because the one thing that will be absolutely clear is that he cannot be shown to show any bias against them, particularly in view of what he's said."</p>
   <p>But Denham said Cable must "immediately step aside "from any involvement with the decision on News Corp's bid to take total control of BSkyB. Every company - big or small - that comes up in front of the competition authorities has a right to know that their case will be heard dispassionately and judged on its merits. Vince Cable, with these extraordinary remarks, has clearly shown he is unable to do that."</p>
-:key-references: ->
-    - actor:newscorp-bid-for-bskyb/roletype?/vince-cable 
-    - actor:newscorp-bid-for-bskyb/roletype?/david-cameron 
-    - actor:newscorp-bid-for-bskyb/roletype?/nick-clegg
-    - actor:newscorp-bid-for-bskyb/roletype?/telegraph
-    - actor:newscorp-bid-for-bskyb/roletype?/ofcom
-    - concept:whistleblower
+:key_references: 
+    - :type: actor
+      :id: rupert-murdoch
+    - :type: actor
+      :id: vince-cable
+    - :type: actor
+      :id: david-cameron
+    - :type: actor
+      :id: nick-clegg
+    - :type: event
+      :id: news-corporation-announce-bskyb-takeover
