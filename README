@@ -29,3 +29,14 @@ If you want it to auto-reload your app when files change, use Shotgun:
   $ shotgun myapp.rb
 
   http://stackoverflow.com/questions/1247125/how-to-get-sinatra-to-auto-reload-the-file-after-each-change
+
+
+# Deploy
+
+Update to latest version from Git:
+
+  $ cap deploy:update
+
+Start:
+
+  $ cap deploy:start
