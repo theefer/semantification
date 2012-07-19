@@ -23,8 +23,10 @@
   <% if main_actors.size > 0 %>
   <h2>Main actors</h2>
   <ul>
-    <% for role in main_actors %>
-    <li><%#= role.actor.full_name %> (<%#= role.type %>)</li>
+    <% for actor in main_actors %>
+        <li>
+            <%= actor.full_name %>
+        </li>
     <% end %>
   </ul>
   <% end %>
