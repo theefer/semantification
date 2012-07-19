@@ -6,3 +6,4 @@ gem 'json'
 gem 'time-ago-in-words'
 gem 'auto_excerpt'
 
+gem 'capistrano'
