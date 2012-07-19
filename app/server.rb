@@ -110,6 +110,19 @@ end
 
 # Or an API?
 
+get '/api/search/:query' do
+  query = params[:query]
+  events = Event.filter({:title => Regexp.new(query, 'i')})
+  events_data = events.map do |ev|
+    { :type  => 'event',
+      :title => ev.title,
+      :id    => ev.id }
+  end
+
+  content_type "application/json"
+  events_data.to_json
+end
+
 get '/api/stories/:id' do
   id = params[:id]
   story = Story.get_by_id(id) or halt 404

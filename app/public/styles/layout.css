@@ -21,6 +21,11 @@ nav {
     display: none;
 }
 
+#search-form {
+    float: right;
+    z-index: 20;
+}
+
 /* headline */
 h1 {
     width: 50%;

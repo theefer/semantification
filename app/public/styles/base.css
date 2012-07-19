@@ -15,6 +15,7 @@ aside li {
   width: 115px;
   height: 22px;
   text-indent: -9999px;
+  float: left;
 }
 
 .fluid-row { 

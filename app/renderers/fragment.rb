@@ -5,7 +5,7 @@ class Fragment
     @fragment_template = read_template("content/fragments/#{fragment_name}")
   end
 
-  def render(data)
+  def render(data={})
     @fragment_template.result(data)
   end
 end
