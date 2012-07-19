@@ -21,14 +21,16 @@
   <% end %>
 
   <% if main_actors.size > 0 %>
-  <h2>Main actors</h2>
-  <ul>
-    <% for actor in main_actors %>
-        <li>
-            <%= actor.full_name %>
-        </li>
-    <% end %>
-  </ul>
+      <section class="main-actors">
+          <h2>Main actors</h2>
+          <ul>
+            <% for actor in main_actors %>
+                <li>
+                    <%= actor.full_name %>
+                </li>
+            <% end %>
+          </ul>
+      </section>
   <% end %>
 
   </section>
