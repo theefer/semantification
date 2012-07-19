@@ -10,7 +10,6 @@ class Story
   def initialize(id, data)
     @id = id
     @data = data
-
     @title = data[:title]
     @synopsis = data[:synopsis]
     @summary = data[:summary]
@@ -18,9 +17,11 @@ class Story
   end
 
   def events_before(event)
+    
   end
 
   def get_related_stories_for(event)
+    
   end
 
   def data

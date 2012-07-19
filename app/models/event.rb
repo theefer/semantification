@@ -30,6 +30,7 @@ class Event
   end
 
   def is_latest_event_in_story?
+    
   end
 
   def main_image
@@ -44,6 +45,7 @@ class Event
   end
 
   def extract_related_quote
+    
   end
 
   def get_articles_by_type(type, limit)
