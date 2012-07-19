@@ -21,11 +21,13 @@ class YamlStorage < Storage
   def filter(matcher, limit=nil)
     # TODO: use limit if set
     item_ids = Dir.entries(@root_dir).map {|f| f.scan(/(.+)\.yml$/)[0]}.flatten.compact
-    item_ids.
+    items = item_ids.
       # FIXME: correctly map id
       map {|id| [id, YAML.load_file("#{@root_dir}/#{id}.yml")]}.
       select {|id, data| data}.
       select {|id, data| matcher.all? {|key, val| match(data[key], val)} }
+    items = items.take(limit) if limit
+    items
   end
 
   def match(left, right)
