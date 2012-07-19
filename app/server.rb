@@ -84,8 +84,6 @@ get '/articles/:id' do
 
   quote = main_event.extract_related_quote
 
-  trending_items = TRENDING_SERVICE.get_top_items(3)
-
   # render ARTICLE
   page = Page.new('article')
   data = {

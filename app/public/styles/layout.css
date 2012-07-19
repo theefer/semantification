@@ -17,13 +17,16 @@ header.site-head {
     display: block;
 }
 
-nav { 
-    display: none;
-}
-
 #search-form {
     float: right;
     z-index: 20;
+}
+
+#trending {
+    position: absolute;
+    top: 0;
+    margin-left: 450px;
+    z-index: 30;
 }
 
 /* headline */

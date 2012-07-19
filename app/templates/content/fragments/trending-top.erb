@@ -1,0 +1,30 @@
+<% trending_items = TRENDING_SERVICE.get_top_items(2) %>
+<% unless trending_items.empty? %>
+<nav id="trending">
+  <ul>
+    <% for item in trending_items %>
+    <li>
+      <article class="event">
+        <div class="thumb">
+          <a href="/events/<%= item.id %>">
+          <h1><%= item.title %></h1>
+          <p class="last-updated">Updated: <time>6 min. ago</time></p>
+          </a>
+        </div>
+        <div class="overview cf">
+          <% for article in item.get_all_articles(2) %>
+          <article class="article horizontal">
+          <a href="/articles/<%= article.id %>">
+            <img src="<%= article.main_image %>"/>
+            <h2><%= article.title %></h2>
+            <p><%= AutoExcerpt.new(article.body_text, :characters => 100, :strip_html => true, :allowed_tags => ['p']) %></p>
+          </a>
+          </article>
+          <% end %>
+        </div>
+      </article>
+    </li>
+    <% end %>
+  </ul>
+</nav>
+<% end %>

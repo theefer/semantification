@@ -137,3 +137,67 @@ section.main-actors {
 section.main-actors li {
   padding: 0;
 }
+
+/* trending stuff */
+
+#trending .event .thumb {
+  background-color: rgba(33, 33, 33, 0.95);
+  color: #fff;
+  padding: 5px 10px;
+}
+#trending .event .thumb h1 {
+  font-size: 1.2em;
+  width: 100%;
+}
+#trending .event .thumb h1,
+#trending .event .thumb p {
+  padding: 0; margin: 0;
+}
+#trending .event .thumb .last-updated {
+  text-align: right;
+  color: #aaa;
+}
+
+#trending .event .overview {
+  position: absolute;
+  -webkit-transition-property: margin-left;
+  -webkit-transition-duration: 0.1s;
+  -webkit-transition-delay: 0.2s;
+  margin-left: -2000px;
+  width: 900px;
+}
+#trending .event:hover .overview {
+  -webkit-transition-delay: 0s;
+  margin-left: -400px;
+}
+#trending a {
+  color: inherit;
+}
+#trending a:hover {
+  text-decoration: none;
+}
+
+.overview {
+  background-color: rgba(33, 33, 33, 0.95);
+  padding: 10px;
+}
+.overview .article.horizontal {
+  float: left;
+  width: 380px;
+}
+.overview .article.horizontal + .article.horizontal {
+  margin-left: 20px;
+}
+.overview .article.horizontal img {
+  float: left;
+  width: 150px;
+  margin-right: 10px;
+}
+.overview .article.horizontal h2 {
+  font-size: 1em;
+  line-height: 1.25em;
+}
+.overview .article.horizontal h2,
+.overview .article.horizontal p {
+  color: #eee;
+}
