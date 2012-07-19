@@ -1,5 +1,8 @@
-window.onkeypress = function(evt){
+
+window.onkeypress = function(evt) {
+
     var key = evt.charCode || evt.keyCode;
+
     switch (key) {
         case 113:
             document.getElementsByTagName('body')[0].className='fluid-wrap active';
@@ -11,4 +14,19 @@ window.onkeypress = function(evt){
             document.getElementsByTagName('body')[0].className='fluid-wrap depth';
             break;
     }
+
 }
+
+window.onload = function() {
+
+     document.getElementById('background').addEventListener('click', function() { 
+        document.getElementsByTagName('body')[0].className='fluid-wrap depth';
+        window.history.pushState({page: 1}, "article", "/event/news-of-the-world-pays-invesigators-to-hack-milly-dowlers-phone/vince-");
+     }, true);
+
+}
+
+window.onpopstate = function(state) {
+    console.log(event);
+}
+
