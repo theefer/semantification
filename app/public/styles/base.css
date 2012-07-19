@@ -133,3 +133,6 @@ aside li {
 section.main-actors {
   clear:both;
 }
+section.main-actors li {
+  padding: 0;
+}
