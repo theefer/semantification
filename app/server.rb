@@ -50,6 +50,7 @@ get '/event/:id' do
 
   # render EVENT
   page = Page.new('event')
+
   page.render({ :event => event,
                 :main_story => main_story,
                 :all_articles => all_articles })
