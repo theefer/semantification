@@ -18,10 +18,15 @@ require 'app/models/article'
 require 'app/models/event'
 require 'app/models/story'
 require 'app/models/actor'
-require 'app/models/page'
 require 'app/models/role'
 require 'app/models/concept'
 require 'app/models/location'
+
+# renderers
+
+require 'app/renderers/templated'
+require 'app/renderers/page'
+require 'app/renderers/fragment'
 
 # services
 

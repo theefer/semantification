@@ -103,6 +103,7 @@
   <% end %>
 
   <% if event.widgets.include?('map') %>
+  <%= Fragment.new('location').render(:event => event) %>
   <section class="location-box">
   <div class="hd zone-border zone-border-medium">
     <h4 class="sub-heading"><%= event.location.name %></h4>
