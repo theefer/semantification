@@ -1,5 +1,38 @@
 <section id="main" class="fluid-row article">
 
+<aside class="from-event col-3">
+
+  <section class="event-box">
+  <div class="hd zone-border zone-border-medium">
+    <h4 class="sub-heading"><a href="/events/<%= main_event.id %>"><%= main_event.title %></a></h4>
+  </div>
+  <%= main_event.synopsis %>
+
+  <% if latest_updates.size > 0 %>
+  <h2>Latest updates</h2>
+  <ul>
+    <% for update in latest_updates %>
+    <li class="latest-update">
+      <span class="text"><%= AutoExcerpt.new(update[:text], :characters => 150) %></span>
+      <a href="/articles/<%= update[:article].id %>#block-<%= update[:id] %>" class="date"><%= update[:date].time_ago_in_words %></a>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <% if main_actors.size > 0 %>
+  <h2>Main actors</h2>
+  <ul>
+    <% for role in main_actors %>
+    <li><%#= role.actor.full_name %> (<%#= role.type %>)</li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  </section>
+
+</aside>
+
 <article class="article-body col-6">
 
 <h1><%= article.title %></h1>
@@ -32,37 +65,28 @@
 
 </article>
 
-<aside class="col-4">
+<aside class="unrelated col-3">
 
-  <section class="event-box">
-  <div class="hd zone-border zone-border-medium">
-    <h4 class="sub-heading"><a href="/events/<%= main_event.id %>"><%= main_event.title %></a></h4>
-  </div>
-  <%= main_event.synopsis %>
+  <!-- ad -->
 
-  <% if latest_updates.size > 0 %>
-  <h2>Latest updates</h2>
-  <ul>
-    <% for update in latest_updates %>
-    <li class="latest-update">
-      <span class="text"><%= AutoExcerpt.new(update[:text], :characters => 150) %></span>
-      <a href="/articles/<%= update[:article].id %>#block-<%= update[:id] %>" class="date"><%= update[:date].time_ago_in_words %></a>
+  <% if popular_articles.size > 0 %>
+  <h2>Other popular articles</h2>
+  <ul class="article-thumb-list">
+    <% for art in popular_articles %>
+    <li>
+      <a href="/articles/<%= art.id %>">
+      <article class="article-thumb">
+        <img src="<%= art.main_image %>"/>
+        <div class="title"><%= art.title %></div>
+      </article>
+      </a>
     </li>
     <% end %>
   </ul>
   <% end %>
 
-  <% if main_actors.size > 0 %>
-  <h2>Main actors</h2>
-  <ul>
-    <% for role in main_actors %>
-    <li><%#= role.actor.full_name %> (<%#= role.type %>)</li>
-    <% end %>
-  </ul>
-  <% end %>
-
-  </section>
-
+  <!-- ad -->
+  
 </aside>
 
 </section>

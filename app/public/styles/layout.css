@@ -101,3 +101,11 @@ aside#characters img {
 }
 
 
+aside.unrelated {
+    -webkit-transition-property: opacity;
+    -webkit-transition-duration: 0.2s;
+    opacity: 0.4;
+}
+aside.unrelated:hover {
+    opacity: 1;
+}
