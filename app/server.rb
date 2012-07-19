@@ -28,6 +28,9 @@ get '/events/:id' do
 
   latest_updates = event.latest_updates(5)
 
+  previous_events = []
+  related_stories = []
+
   main_story = event.main_story # stories?
   if main_story
     previous_events = main_story.events_before(event)
@@ -51,17 +54,12 @@ get '/events/:id' do
 
   # render EVENT
   page = Page.new('event')
-  page.render({ :event => event,
-                :main_story => main_story,
-                :all_articles => all_articles,
-                :concept_widgets => concept_widgets,
-                :previous_events => previous_events
-              })
   data = {
     :event => event,
     :main_story => main_story,
     :all_articles => all_articles,
-    :concept_widgets => concept_widgets
+    :concept_widgets => concept_widgets,
+    :previous_events => previous_events
   }
   case params[:format]
   when 'ahah'
