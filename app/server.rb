@@ -15,12 +15,13 @@ end
 
 
 get '/stories/:id' do
-  id = params[:id]
+  id, format = params[:id].scan(/^([^.]+)(?:\.(.+))?$/)[0]
   # render STORY
 end
 
 get '/events/:id' do
-  id = params[:id]
+  id, format = params[:id].scan(/^([^.]+)(?:\.(.+))?$/)[0]
+
   event = Event.get_by_id(id)
   main_image = event.main_image
   background = event.background
@@ -50,16 +51,23 @@ get '/events/:id' do
 
   # render EVENT
   page = Page.new('event')
-
-  page.render({ :event => event,
-                :main_story => main_story,
-                :all_articles => all_articles,
-                :concept_widgets => concept_widgets
-              })
+  data = {
+    :event => event,
+    :main_story => main_story,
+    :all_articles => all_articles,
+    :concept_widgets => concept_widgets
+  }
+  case params[:format]
+  when 'ahah'
+    page.render_content(data)
+  else
+    page.render(data)
+  end
 end
 
 get '/articles/:id' do
-  id = params[:id]
+  id, format = params[:id].scan(/^([^.]+)(?:\.(.+))?$/)[0]
+
   article = Article.get_by_id(id) or halt 404
   main_story = article.main_story
   main_event = article.main_event
@@ -76,12 +84,22 @@ get '/articles/:id' do
 
   # render ARTICLE
   page = Page.new('article')
-  page.render({ :article    => article,
-                :main_event => main_event,
-                :main_story => main_story,
-                :main_actors => main_actors,
-                :next_articles => next_articles,
-                :latest_updates => latest_updates })
+  data = {
+    :article    => article,
+    :main_event => main_event,
+    :main_story => main_story,
+    :main_actors => main_actors,
+    :next_articles => next_articles,
+    :latest_updates => latest_updates
+  }
+  case format
+  when 'ahah'
+    page.render_content(data)
+  when nil, 'html'
+    page.render(data)
+  else
+    halt 404
+  end
 end
 
 
