@@ -118,3 +118,23 @@ aside.unrelated {
 aside.unrelated:hover {
     opacity: 1;
 }
+
+
+/* hacky opinion */
+.opinion {
+    margin: 7px 0 7px 0 !important;
+    padding: 7px 0 7px 0;
+    margin-left: 0 ; 
+    position: relative;
+    text-justify: inter-word;
+    width: 40%;
+  }
+
+  .mod {
+    font-size: 15px;
+    padding-left: 5px;
+  }
+
+  .vs {
+    text-align: center;
+  }
