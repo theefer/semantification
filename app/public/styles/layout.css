@@ -138,3 +138,11 @@ aside.unrelated:hover {
   .vs {
     text-align: center;
   }
+
+  /* in depth */
+
+.in-depth {
+clear: both;
+padding-top: 7px;
+border-top: 1px solid #999;
+}
