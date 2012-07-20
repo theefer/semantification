@@ -238,6 +238,10 @@ blockquote .author {
   color: #999;
 }
 
+.pull-quote {
+  margin-top: 100px;
+}
+
 aside#background {
   float: left;
   width: 60% !important;
@@ -245,6 +249,22 @@ aside#background {
 
 aside#characters {
   clear: right;
+  float: left;
+  width: 50%;
+}
+
+aside#characters .player {
+  clear: left;
+  float: left;
+  margin-bottom: 10px;
+}
+aside#characters img {
+  float: left;
+  margin-right: 10px;
+}
+aside#characters p {
+  float: left;
+  width: 55%;
 }
 
 #reaction {
@@ -255,6 +275,8 @@ aside#characters {
 .latest-updates {
   float: right;
   width: 260px;
+  background-color: #eee;
+  padding: 10px;
 }
 
 .latest-updates time {
