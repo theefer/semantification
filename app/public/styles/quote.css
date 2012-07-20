@@ -44,4 +44,8 @@ blockquote .quote {
                                                                            color: #FF0000;
                                                                             }
 
+.bqsmall {
 
+  font-size: 400%;
+  color: #0A3674;
+}
