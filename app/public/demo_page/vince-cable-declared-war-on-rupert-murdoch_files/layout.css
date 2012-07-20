@@ -82,6 +82,7 @@ aside#characters img {
     clear: both;
     padding-top: 7px;
     border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
 }
 
 /* box */
