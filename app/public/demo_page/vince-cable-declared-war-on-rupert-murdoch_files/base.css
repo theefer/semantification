@@ -1,0 +1,266 @@
+body {
+    background-color: white;
+}
+
+aside p, aside li {
+    line-height: 170%;
+}
+
+aside li { 
+    padding-top: 1em;
+}
+
+#logo {
+  background: url(/images/guardian_logo.gif) no-repeat;
+  width: 115px;
+  height: 22px;
+  text-indent: -9999px;
+  float: left;
+}
+
+.fluid-row { 
+    clear: none;
+}
+
+.site-head {
+  margin: 10px 0;
+}
+
+.nav-tags {
+  margin-bottom: 10px;
+}
+
+.site-search {
+  float: right;
+}
+.site-logo {
+}
+
+
+.gu-ref {
+  border-bottom: 1px dotted #999;
+  cursor: pointer; /* backward compat */
+  cursor: help;
+}
+
+
+.article-thumb-list {
+  list-style-type: none;
+  margin: 0; padding: 0;
+}
+
+.article-thumb {
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.article-thumb img {
+  width: 200px;
+  float: left;
+}
+
+.article-thumb .title {
+  position: absolute;
+  left: 0; bottom: 0; right: 0;
+  background-color: rgba(200, 200, 200, 0.8);
+  padding: 0 5px;
+}
+
+
+.latest-update {
+  clear: both;
+}
+
+.latest-update .text {
+  display: block;
+}
+.latest-update .date {
+  float: right;
+}
+
+
+/* TODO: use container row for this */
+.key-events {
+    margin-top: 88px;
+    float: left;
+}
+
+.key-events {
+  width: 100px;
+}
+.key-events ul {
+  list-style-type: none;
+  padding: 0; margin: 0;
+}
+
+.key-events .story-title {
+  font-weight: bold;
+  margin: -1px -10px;
+  padding: 10px;
+}
+
+.key-events .event {
+  padding: 5px 10px;
+  margin-left: -10px
+}
+.key-events .event.current {
+  background-color: #eee;
+}
+.key-events .event.ellipsis {
+  background-color: #eee;
+  text-align: center;
+}
+
+
+.key-events .event time {
+  display: block;
+  text-align: right;
+  color: #666;
+  font-size: smaller;
+}
+.key-events .event .title {
+  display: block;
+}
+
+/* advert */
+
+#advert {
+    width: 100%;
+    margin-top: 14px;
+} 
+
+section.main-actors {
+  clear:both;
+}
+section.main-actors li {
+  padding: 0;
+}
+
+/* trending stuff */
+
+#trending .event .thumb {
+  background-color: rgba(33, 33, 33, 0.95);
+  color: #fff;
+  padding: 5px 10px;
+}
+#trending .event .thumb h1 {
+  font-size: 1.2em;
+  width: 100%;
+}
+#trending .event .thumb h1,
+#trending .event .thumb p {
+  padding: 0; margin: 0;
+}
+#trending .event .thumb .last-updated {
+  text-align: right;
+  color: #aaa;
+}
+
+#trending .event .overview {
+  position: absolute;
+  -webkit-transition-property: margin-left;
+  -webkit-transition-duration: 0.1s;
+  -webkit-transition-delay: 0.2s;
+  margin-left: -2000px;
+  width: 900px;
+}
+#trending .event:hover .overview {
+  -webkit-transition-delay: 0s;
+  margin-left: -400px;
+}
+#trending a {
+  color: inherit;
+}
+#trending a:hover {
+  text-decoration: none;
+}
+
+.overview {
+  background-color: rgba(33, 33, 33, 0.95);
+  padding: 10px;
+}
+.overview .article.horizontal {
+  float: left;
+  width: 380px;
+}
+.overview .article.horizontal + .article.horizontal {
+  margin-left: 20px;
+}
+.overview .article.horizontal img {
+  float: left;
+  width: 150px;
+  margin-right: 10px;
+}
+.overview .article.horizontal h2 {
+  font-size: 1em;
+  line-height: 1.25em;
+}
+.overview .article.horizontal h2,
+.overview .article.horizontal p {
+  color: #eee;
+}
+
+
+
+
+
+#story {
+  width: 100px;
+  position: absolute;
+  margin-left: -5px;
+  margin-top: -18px;
+}
+#story .whole {
+  margin-bottom: 3px;
+  color: #999;
+}
+#story .title {
+  background-color: #FDF2D3;
+  padding: 5px;
+  font-weight: bold;
+}
+
+
+blockquote .author {
+  font-size: 14pt;
+  display: block;
+  text-align: right;
+  margin-right: 20px;
+}
+
+
+.read {
+  color: #999;
+}
+.read a {
+  color: #999;
+}
+
+aside#background {
+  float: left;
+  width: 60% !important;
+}
+
+aside#characters {
+  clear: right;
+}
+
+#reaction {
+  float: left;
+  width: 100%;
+}
+
+.latest-updates {
+  float: right;
+  width: 260px;
+}
+
+.latest-updates time {
+  display: block;
+  text-align: right;
+}
+.latest-updates p {
+  margin: 0;
+}
