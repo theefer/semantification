@@ -1,0 +1,34 @@
+#search-form {
+  position: relative;
+}
+
+#search-form .search-field {
+  width: 150px;
+  float: right;
+}
+
+#search-form .search-results {
+  list-style-type: none;
+  margin: 0; padding: 0;
+  border: 1px solid #ccc;
+  clear: both;
+}
+
+#search-form .search-results .item {
+  display: block;
+  padding: 5px 10px;
+  background-color: #fff;
+}
+
+#search-form .search-results .item + .item {
+  border-top: 1px solid #eee;
+}
+
+#search-form .search-results .item a {
+  color: inherit;
+}
+
+#search-form .search-results .item .type {
+  margin-left: 20px;
+  color: #aaa;
+}
