@@ -1,3 +1,23 @@
+section.main-actors ul {
+    list-style-type: none;
+    margin: 1em 0px 1em 10px;
+}
+section.main-actors ul p {
+    clear: both;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+section.main-actors ul img {
+    float: left; /* May not be needed; error in last minute changes float-left */
+}
+section.main-actors li {
+  margin-bottom: 1em;
+}
+section.main-actors p.bio{
+  font-weight:normal;
+  border: thin solid silver;
+  padding: 5px;
+}
 
 body.fluid-wrap {
     padding: 0 60px 100% 60px;
