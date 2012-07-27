@@ -29,6 +29,10 @@ header.site-head {
     z-index: 30;
 }
 
+.article-body h1 {
+    width: 100%;
+}
+
 /* headline */
 h1 {
     width: 50%;
