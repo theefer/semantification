@@ -40,6 +40,18 @@
 <article class="article-body col-6">
 
   <h1><%= article.title %></h1>
+  
+  <ul class="article-attributes trackable-component b4" data-component="comp: r2: Byline">
+	<li class="byline">
+		<div class="contributor-full">
+			Reuters	
+		</div>
+	</li>
+        <li class="publication">
+		<a href="http://www.guardian.co.uk/">guardian.co.uk</a>,
+		<time datetime="2012-07-20T11:12BST" pubdate="">Friday 20 July 2012 11.12 BST</time> 
+        </li>
+  </ul>
 
   <figure>
     <img src="<%= article.main_image %>"/>
