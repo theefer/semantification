@@ -1,0 +1,8 @@
+-- TODO List (In no particular order) --
+
+Merge last minute article changes into article template
+Inline clicking of actors
+Implement a simple story page (?)
+Scrolling (Javascript) of Story <-> Event <-> Article plus dynamic loading
+More mock data (Key references, actors, etc.)
+Clean up any html/css loose ends (Make it look nice and polished)
