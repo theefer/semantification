@@ -6,7 +6,8 @@
   <div class="hd zone-border zone-border-medium">
     <h4 class="sub-heading"><a href="/events/<%= main_event.id %>"><%= main_event.title %></a></h4>
   </div>
-  <%= main_event.synopsis %>
+  
+  <p><%= main_event.synopsis %></p>
 
   <% if latest_updates.size > 0 %>
   <h2>Latest updates</h2>
@@ -35,18 +36,22 @@
             <% end %>
           </ul>
        </section>
-       <section id="opinions">
-            <h2>Opinions</h2>
-            <ul>
-                <% for opinion_article in  main_event.get_articles_by_type('opinion') %>
-                    <li>
-                        <h4><%= opinion_article.format_type %></h4>
-                        <a href="/articles/<%= opinion_article.id %>"><img src="<%= opinion_article.main_image %>"/></a>
-                        <p><%= opinion_article.title %></p>
-                    </li>
-            <% end %>
-            </ul>
-       </section>
+  <% end %>
+  <% if main_event.get_articles_by_type('opinion').size > 1 %>
+      <section id="opinions">
+                <h2>Opinions</h2>
+                <ul>
+                    <% for opinion_article in main_event.get_articles_by_type('opinion') %>
+                        <% if opinion_article.id != article.id %>
+                        <li>
+                            <h4><%= opinion_article.format_type %></h4>
+                            <a href="/articles/<%= opinion_article.id %>"><img src="<%= opinion_article.main_image %>"/></a>
+                            <p><%= opinion_article.title %></p>
+                        </li>
+                        <% end %>
+                <% end %>
+                </ul>
+      </section>
   <% end %>
 
   </section>
