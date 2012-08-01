@@ -1,6 +1,5 @@
 -- TODO List (In no particular order) --
 
-Merge last minute article changes into article template
 Inline clicking of actors
 Implement a simple story page (?)
 Scrolling (Javascript) of Story <-> Event <-> Article plus dynamic loading
