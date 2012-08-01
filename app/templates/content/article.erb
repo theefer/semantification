@@ -37,6 +37,18 @@
        </section>
        <section id="opinions">
             <h2>Opinions</h2>
+            <ul>
+                <% for opinion_article in  main_event.get_articles_by_type('opinion') %>
+                    <li>
+                        <h4><%= opinion_article.format_type %></h4>
+                        <a href="/articles/<%= opinion_article.id %>"><img src="<%= opinion_article.main_image %>"/></a>
+                        <p><%= opinion_article.title %></p>
+                    </li>
+            <% end %>
+            </ul>
+       </section>
+       <section id="opinions">
+            <h2>Opinions</h2>
                 <ul>
                     <li>
                         <h4>In depth</h4>

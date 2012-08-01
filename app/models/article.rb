@@ -85,4 +85,8 @@ class Article
         end
     end.select {|ref| ref}
   end
+
+  def format_type
+    @type.capitalize
+  end
 end
