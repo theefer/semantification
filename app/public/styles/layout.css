@@ -1,3 +1,10 @@
+.article-body ul.b4 {
+    border-bottom: thin solid #0A3674;
+    border-top: thin solid #0A3674;
+    list-style-type: none;
+    margin: 1em 0;
+    padding: 0;
+}
 section.main-actors ul {
     list-style-type: none;
     margin: 1em 0px 1em 10px;
