@@ -1,3 +1,7 @@
+#opinions ul {
+    list-style-type: none;
+    margin: 1em 15px 1em 10px;
+}
 .article-body ul.b4 {
     border-bottom: thin solid #0A3674;
     border-top: thin solid #0A3674;
@@ -13,9 +17,6 @@ section.main-actors ul p {
     clear: both;
     font-weight: bold;
     margin-bottom: 5px;
-}
-section.main-actors ul img {
-    float: left; /* May not be needed; error in last minute changes float-left */
 }
 section.main-actors li {
   margin-bottom: 1em;
