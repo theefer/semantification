@@ -114,10 +114,10 @@ aside li {
 }
 
 /* plain links */
-.key-events .event a {
+.key-events a {
   color: inherit;
 }
-.key-events .event a:hover {
+.key-events a:hover {
   text-decoration: none;
 }
 

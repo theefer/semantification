@@ -1,5 +1,5 @@
 <section class="key-events">
-    <div class="story-title">BSkyB Bid<%# story.title %></div>
+    <div class="story-title"><a href="/stories/<%= story.id %>"><%= story.title %></a></div>
     <ul>
         <% for ev in story.events %>
         <li class="event <%= ev.id == current_event.id ? 'current' : '' %>">
