@@ -1,7 +1,16 @@
 -- TODO List (In no particular order) --
 
-Inline clicking of actors
+In-article-page references, expandable
 Implement a simple story page (?)
-Scrolling (Javascript) of Story <-> Event <-> Article plus dynamic loading
-More mock data (Key references, actors, etc.)
+More mock data:
+  - event.when
+  - event.summary
+  - event.quote
+  - event.updates
+  - event.image
+Show contrasting opinions on event page
 Clean up any html/css loose ends (Make it look nice and polished)
+
+Trending
+  - show event summary
+  - show article types
