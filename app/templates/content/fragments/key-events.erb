@@ -3,8 +3,10 @@
     <ul>
         <% for ev in story.events %>
         <li class="event <%= ev.id == current_event.id ? 'current' : '' %>">
-            <span class="title"><%= ev.title %></span>
-            <time><%= Time.parse(ev.date).strftime('%e %b, %Y') %></time>
+            <a href="/events/<%= ev.id %>">
+                <span class="title"><%= ev.title %></span>
+                <time><%= Time.parse(ev.date).strftime('%e %b, %Y') %></time>
+            </a>
         </li>
         <% end %>
 <%#     <li class="event ellipsis">&hellip;</li> %>

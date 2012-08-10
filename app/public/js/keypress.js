@@ -20,6 +20,7 @@ window.onkeydown = function(evt) {
     var nextOrderOffset = Math.max(0, Math.min(maxOffset, currentOrderOffset + offset));
 
     window.navigation.setView(viewOrder[nextOrderOffset]);
+    // TODO: update URL/window.history
 }
 
 // window.onpopstate = function(event) {

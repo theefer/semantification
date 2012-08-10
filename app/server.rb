@@ -21,10 +21,10 @@ def prepare_content(root)
 
     main_story = root.main_story # stories?
     if main_story
-      previous_events = main_story.events_before(event)
+      previous_events = main_story.events_before(root)
       # and next, when not on latest event
 
-      related_stories = main_story.get_related_stories_for(event) # i.e. not the main story?
+      related_stories = main_story.get_related_stories_for(root) # i.e. not the main story?
     end
 
     live_article = root.find_live_article

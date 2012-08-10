@@ -113,6 +113,14 @@ aside li {
   text-align: center;
 }
 
+/* plain links */
+.key-events .event a {
+  color: inherit;
+}
+.key-events .event a:hover {
+  text-decoration: none;
+}
+
 
 .key-events .event time {
   display: block;
