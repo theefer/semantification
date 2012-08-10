@@ -23,16 +23,16 @@
  float: left;        
 }
 
-/* active left */
-.active [role="background"] {   
+/* background left */
+.background [role="background"] {   
  margin-left: 0; 
  width: 95%;
 }
-.active [role="event"]{
+.background [role="event"]{
  margin-right: -100%;
 
 }
-.active [role="depth"] {    
+.background [role="depth"] {    
  margin-right: -200%;
  float: right;       
 }

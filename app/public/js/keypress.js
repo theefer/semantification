@@ -1,32 +1,27 @@
-
-window.onkeypress = function(evt) {
-
+window.onkeydown = function(evt) {
     var key = evt.charCode || evt.keyCode;
-
-    switch (key) {
-        case 113:
-            document.getElementsByTagName('body')[0].className='fluid-wrap active';
-            break;
-        case 119:
-            document.getElementsByTagName('body')[0].className='fluid-wrap event';
-            break;
-        case 101:
-            document.getElementsByTagName('body')[0].className='fluid-wrap depth';
-            break;
+    var LEFT  = 37,
+        UP    = 38,
+        RIGHT = 39,
+        DOWN  = 40;
+    var offset;
+    switch(key) {
+    case LEFT:  offset = -1; break;
+    case RIGHT: offset = 1;  break;
+    default:    return;
     }
 
+    var body = document.getElementsByTagName('body')[0];
+
+    var viewOrder = ['background', 'event', 'depth'];
+    var currentView = window.navigation.currentView();
+    var maxOffset = viewOrder.length - 1;
+    var currentOrderOffset = viewOrder.indexOf(currentView);
+    var nextOrderOffset = Math.max(0, Math.min(maxOffset, currentOrderOffset + offset));
+
+    window.navigation.setView(viewOrder[nextOrderOffset]);
 }
 
-window.onload = function() {
-
-     document.getElementById('background').addEventListener('click', function() { 
-        document.getElementsByTagName('body')[0].className='fluid-wrap depth';
-        window.history.pushState({page: 1}, "article", "/events/news-of-the-world-pays-invesigators-to-hack-milly-dowlers-phone/vince-");
-     }, true);
-
-}
-
-window.onpopstate = function(state) {
-    console.log(event);
-}
-
+// window.onpopstate = function(event) {
+//   console.log(event);
+// }

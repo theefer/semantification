@@ -11,7 +11,10 @@
 
   <!-- Nb. Merriweather looks a bit like Egypt -->
   <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300' rel='stylesheet' type='text/css'/>
+  <script src="/js/navigation.js"></script>
   <script src="/js/keypress.js"></script>
+  <script src="/js/click.js"></script>
+  <script src="/js/lib/reqwest.min.js"></script>
   <script type="text/javascript"
           src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBslVTUmzJUbN6LGrXhUAb6nHKEFXHSds8&sensor=false"></script>
   <!-- Note: guys, this is my key, so don't fuck with it please. ta! -->
@@ -19,7 +22,7 @@
   <script type="text/javascript" src="/scripts/search.js"></script>
 </head>
 
-<body class="fluid-wrap">
+<body class="fluid-wrap <%= content_position %>" data-view="<%= content_position %>">
 
 <header class="site-head">
 	<div class="site-logo" id="logo">The Guardian</div>
@@ -29,7 +32,17 @@
 
 <%= Fragment.new('trending-top').render %>
 
-<%= content %>
+<section id="main-story" class="fluid-row story" role="background" data-id="<%= story_id %>">
+    <%= story %>
+</section>
+
+<section id="main-event" class="fluid-row event" role="event" data-id="<%= event_id %>">
+    <%= event %>
+</section>
+
+<section id="main-article" class="fluid-row article" role="depth" data-id="<%= article_id %>">
+    <%= article %>
+</section>
 
 </body>
 </html>

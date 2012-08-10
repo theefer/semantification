@@ -4,6 +4,69 @@ RECOMMENDATION_SERVICE = RecommendationService.new
 
 USER = 'you'
 
+
+def prepare_content(root)
+  case root
+  when Story
+    {}
+
+  when Event
+    main_image = root.main_image
+    background = root.background
+
+    latest_updates = root.latest_updates(5)
+
+    previous_events = []
+    related_stories = []
+
+    main_story = root.main_story # stories?
+    if main_story
+      previous_events = main_story.events_before(event)
+      # and next, when not on latest event
+
+      related_stories = main_story.get_related_stories_for(event) # i.e. not the main story?
+    end
+
+    live_article = root.find_live_article
+    quote = root.extract_related_quote
+
+    all_articles = root.get_all_articles
+    opinion_articles = root.get_articles_by_type('opinion', 2)
+
+    # get impact on you articles?
+    # get in depth articles?
+    # get whatever man?
+
+    # ad-hoc :'-(
+    concept_widgets = root.widgets.map {|name| name.scan(/definition\/(.*)/)}.flatten.compact.map {|concept_name| Concept.get_by_id(concept_name)}
+    {
+      :event           => root,
+      :main_story      => main_story,
+      :all_articles    => all_articles,
+      :concept_widgets => concept_widgets,
+      :previous_events => previous_events
+    }
+
+  when Article
+    main_story = root.main_story
+    main_event = root.main_event
+    # related_events = root.secondary_events
+    latest_updates = main_event.latest_updates(5)
+
+    main_actors = root.extract_main_actors(3)
+
+    # quote = main_event.extract_related_quote
+    {
+      :article        => root,
+      :main_event     => main_event,
+      :main_story     => main_story,
+      :main_actors    => main_actors,
+      :latest_updates => latest_updates
+    }
+  end
+end
+
+
 # static assets in /public
 set :public_folder, 'app/public'
 
@@ -25,49 +88,15 @@ get '/events/:id' do
   id, format = params[:id].scan(/^([^.]+)(?:\.(.+))?$/)[0]
 
   event = Event.get_by_id(id)
-  main_image = event.main_image
-  background = event.background
 
-  latest_updates = event.latest_updates(5)
-
-  previous_events = []
-  related_stories = []
-
-  main_story = event.main_story # stories?
-  if main_story
-    previous_events = main_story.events_before(event)
-    # and next, when not on latest event
-
-    related_stories = main_story.get_related_stories_for(event) # i.e. not the main story?
-  end
-
-  live_article = event.find_live_article
-  quote = event.extract_related_quote
-
-  all_articles = event.get_all_articles
-  opinion_articles = event.get_articles_by_type('opinion', 2)
-
-  # get impact on you articles?
-  # get in depth articles?
-  # get whatever man?
-
-  # ad-hoc :'-(
-  concept_widgets = event.widgets.map {|name| name.scan(/definition\/(.*)/)}.flatten.compact.map {|concept_name| Concept.get_by_id(concept_name)}
-
-  # render EVENT
   page = Page.new('event')
-  data = {
-    :event => event,
-    :main_story => main_story,
-    :all_articles => all_articles,
-    :concept_widgets => concept_widgets,
-    :previous_events => previous_events
-  }
+  event_data = prepare_content(event)
+
   case params[:format]
   when 'ahah'
-    page.render_content(data)
+    page.render_content(event_data)
   else
-    page.render(data)
+    page.render({:event => event_data})
   end
 end
 
@@ -75,29 +104,16 @@ get '/articles/:id' do
   id, format = params[:id].scan(/^([^.]+)(?:\.(.+))?$/)[0]
 
   article = Article.get_by_id(id) or halt 404
-  main_story = article.main_story
-  main_event = article.main_event
-  related_events = article.secondary_events
-  latest_updates = main_event.latest_updates(5)
 
-  main_actors = article.extract_main_actors(3)
-
-  quote = main_event.extract_related_quote
-
-  # render ARTICLE
   page = Page.new('article')
-  data = {
-    :article    => article,
-    :main_event => main_event,
-    :main_story => main_story,
-    :main_actors => main_actors,
-    :latest_updates => latest_updates
-  }
+  article_data = prepare_content(article)
+
   case format
   when 'ahah'
-    page.render_content(data)
+    page.render_content(article_data)
   when nil, 'html'
-    page.render(data)
+    page.render({:article => article_data,
+                 :event   => prepare_content(article.main_event)})
   else
     halt 404
   end
