@@ -27,8 +27,16 @@ window.onclick = function(evt) {
         evt.preventDefault();
       }
       // else fall through, let link load
+    } else if (pathname.match(/\/stories\//)) {
+      var currentStory = document.getElementById('main-story'),
+          currentStoryId = currentStory.getAttribute('data-id');
+      if (currentStoryId && pathname == currentStoryId) {
+        window.navigation.setView('background');
+        window.history.pushState({page: 1}, "story", href);
+        evt.preventDefault();
+      }
+      // else fall through, let link load
     }
-    // TODO: also for stories
   }
   // TODO: listen to history changes, reflect
 }

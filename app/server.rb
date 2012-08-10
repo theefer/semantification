@@ -8,7 +8,9 @@ USER = 'you'
 def prepare_content(root)
   case root
   when Story
-    {}
+    {
+      :story => root
+    }
 
   when Event
     main_image = root.main_image
@@ -88,6 +90,7 @@ get '/events/:id' do
   id, format = params[:id].scan(/^([^.]+)(?:\.(.+))?$/)[0]
 
   event = Event.get_by_id(id)
+  main_story = event.main_story
 
   page = Page.new('event')
   event_data = prepare_content(event)
@@ -96,7 +99,8 @@ get '/events/:id' do
   when 'ahah'
     page.render_content(event_data)
   else
-    page.render({:event => event_data})
+    page.render({:event => event_data,
+                 :story   => main_story && prepare_content(main_story)})
   end
 end
 
@@ -104,6 +108,7 @@ get '/articles/:id' do
   id, format = params[:id].scan(/^([^.]+)(?:\.(.+))?$/)[0]
 
   article = Article.get_by_id(id) or halt 404
+  main_story = article.main_story
 
   page = Page.new('article')
   article_data = prepare_content(article)
@@ -113,7 +118,8 @@ get '/articles/:id' do
     page.render_content(article_data)
   when nil, 'html'
     page.render({:article => article_data,
-                 :event   => prepare_content(article.main_event)})
+                 :event   => prepare_content(article.main_event),
+                 :story   => main_story && prepare_content(main_story)})
   else
     halt 404
   end

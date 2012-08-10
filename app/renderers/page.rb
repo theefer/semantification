@@ -35,8 +35,8 @@ class Page
   end
 
   def path_from_data(type, data)
-    if id = data[type] && data[type][type].id
-      "/#{type}s/#{id}"
+    if id = data[type] && data[type][type] && data[type][type].id
+      "/#{plural(type)}/#{id}"
     else
       ''
     end
@@ -44,5 +44,13 @@ class Page
 
   def content_from_data(type, data)
     (data[type] && template(type.to_s).result(data[type])) || ''
+  end
+
+  def plural(type)
+    {
+      :story => 'stories',
+      :event => 'events',
+      :article => 'articles'
+    }[type]
   end
 end
