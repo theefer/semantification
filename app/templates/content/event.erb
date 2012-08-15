@@ -24,44 +24,120 @@
 </aside>
 
 
-<blockquote class="col-5">
-    <span class="bqstart">“</span>
-    <span class="quote">
-        We need those messages as evidence. Anybody who destroys that evidence is seriously interfering with the course of a police investigation.
-    </span>
-    <span class="bqend">”</span>
-</blockquote>
-
-
-<aside>
-    <h2>Since your last visit (3pm Nov. 23)</h2>
+<aside class="latest-updates">
+    <h2>Latest updates (8 min. ago)</h2>
     <ul>
-        <li><time>Nov 25.</time> We need those messages as evidence. Anybody who destroys that evidence is seriously interfering with the course of a police.</li>
-        <li><time>Nov 24</time> It was revealed that the business secretary told two undercover reporters he had "declared war" on Rupert Murdoch.</li>
-        <li class="read"><time>Nov 24</time> The News of the World illegally targeted the missing schoolgirl Milly Dowler and her family in March 2002.</li>
+      <li>
+        <p>We need those messages as evidence. Anybody who destroys that evidence is seriously interfering with the course of a police.</p>
+          <time><a href="">8 min. ago</a></time>
+        </li>
+        <li>
+          <p>It was revealed that the business secretary told two undercover reporters he had "declared war" on Rupert Murdoch.</p>
+          <time><a href="">37 min. ago</a></time>
+        </li>
+        <li class="read">
+          <p>The News of the World illegally targeted the missing schoolgirl Milly Dowler and her family in March 2002.</p>
+          <time><a href="">1 hour ago</a></time>
+        </li>
     </ul> 
 </aside>
 
+<% if event.quote %>
+<blockquote class="col-5 pull-quote">
+    <span class="bqstart">“</span>
+    <span class="quote"><%= event.quote[:text] %></span>
+    <span class="author"><%= event.quote[:author] %></span>
+    <span class="bqend">”</span>
+</blockquote>
+<% end %>
+
+
+<div class="fluid-row">
+<% if event.widgets.include?('map') %>
+<div class="col-4">
+<%= Fragment.new('location').render(:event => event) %>
+</div>
+<% end %>
+
+<% for concept in concept_widgets %>
+<div class="col-3">
+<%= Fragment.new('concept').render(:concept => concept) %>
+</div>
+<% end %>
+</div>
+
+<% if event.roles.size > 0 %>
 <aside id="characters">
-    <!-- <h2>Characters</h2>
-    <img src="http://news.bbcimg.co.uk/media/images/54023000/jpg/_54023105_murdoch_reuters_238.jpg" />
-    <img src="http://news.bbcimg.co.uk/media/images/50975000/jpg/_50975432_wade_afp.jpg" />
-    <img src="http://news.bbcimg.co.uk/media/images/54023000/jpg/_54023097_jamesmurdoch_ap.jpg"/>
-    <img src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2011/5/10/1305036701106/Milly-Dowler-007.jpg"/>
-    -->
-    </aside>
+    <h2>Key players</h2>
+
+    <% for role in event.roles %>
+    <div class="player">
+      <img src="<%= role.actor.wide_thumbnail %>"/>
+      <%= role.description %>
+    </div>
+    <% end %>
+</aside>
+<% end %>
 
 <div id="reaction">
-    <h2>Reaction</h2>
+    <h2>Opinions</h2>
+<style>
+  .option {
+    margin: 7px 0 7px 0 !important;
+    padding: 7px 0 7px 0;
+    margin-left: 0 ; 
+    position: relative;
+    text-justify: inter-word;
+    width: 40%;
+  }
+
+  .mod {
+    font-size: 15px;
+    padding-left: 5px;
+  }
+
+  .vs {
+    text-align: center;
+  }
+</style>
+  <div class="option col-4">
+    <article class="article-thumb">
+      <img src="http://static.guim.co.uk/sys-images/Media/Columnists/Columnists/2011/7/6/1309964190031/Rupert-Murdoch-007.jpg">
+      <div class="title">Tory MPs should be roaring on the airwaves against this bugging of Lib Dem colleagues</div>
+    </article>
+  </div>
+  <blockquote class="mod">
+    <span class="bqsmall">“</span>
+    <span class="quote">
+        Ed Miliband has been silly, but he's only a lad. Lib Dems have been worse, but they are Lib Dems after all. It's Tories we look to to defend constitutional proprieties against the mob
+    </span>
+    <span class="bqend">”</span>
+    </blockquote>
+    <h2 class="vs col-10">VS</h2>
+    <blockquote class="mod col-7">
+    <span class="bqsmall">“</span>
+    <span class="quote">
+        Taking the Murdoch decision away from Vince Cable stopped this story in its tracks – but made it a poisoned chalice
+    </span>
+    <span class="bqend">”</span>
+    </blockquote>
+     <div class="option col-4">
+    <article class="article-thumb">
+      <img src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2010/12/21/1292959920209/Vince-Cable-007.jpg">
+      <div class="title">It was wrong to strip Vince Cable of the BSkyB decision</div>
+    </article>
+  </div>
 </div>
 
 <% if all_articles.size > 0 %>
-<h2>Articles</h2>
-<ul>
-<% for art in all_articles %>
-  <li><a href="/articles/<%= art.id %>"><%= art.title %></a></li>
-<% end %>
-</ul>
+<div class="below-guilt">
+  <h2>In depth</h2>
+  <ul>
+    <% for art in all_articles %>
+    <li><a href="/articles/<%= art.id %>"><%= art.title %></a></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
 
 

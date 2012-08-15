@@ -81,6 +81,22 @@ aside li {
 }
 
 
+.latest-updates {
+  float: right;
+  width: 260px;
+  background-color: #eee;
+  padding: 10px;
+}
+
+.latest-updates time {
+  display: block;
+  text-align: right;
+}
+.latest-updates p {
+  margin: 0;
+}
+
+
 /* TODO: use container row for this */
 .key-events {
     margin-top: 88px;
@@ -204,11 +220,60 @@ section.main-actors li {
   width: 150px;
   margin-right: 10px;
 }
-.overview .article.horizontal h2 {
+.overview .horizontal h2 {
   font-size: 1em;
   line-height: 1.25em;
 }
-.overview .article.horizontal h2,
-.overview .article.horizontal p {
+.overview .horizontal h2,
+.overview .horizontal p {
   color: #eee;
+}
+
+aside#background {
+  float: left;
+}
+
+aside#characters {
+  clear: right;
+  float: left;
+  width: 50%;
+}
+
+aside#characters .player {
+  clear: left;
+  float: left;
+  margin-bottom: 10px;
+}
+aside#characters img {
+  float: left;
+  margin-right: 10px;
+}
+aside#characters p {
+  float: left;
+  width: 55%;
+}
+
+.read {
+  color: #999;
+}
+.read a {
+  color: #999;
+}
+
+.pull-quote {
+  margin-top: 50px;
+}
+
+.pull-quote .author {
+  font-size: 14pt;
+  display: block;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.below-guilt {
+  border-top: 1px solid #999;
+  margin-top: 10px;
+  padding-top: 10px;
+  clear: both;
 }

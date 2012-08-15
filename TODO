@@ -1,16 +1,13 @@
 -- TODO List (In no particular order) --
 
+Show contrasting opinions on event page
 In-article-page references, expandable
 Implement a simple story page (?)
 More mock data:
   - event.when
-  - event.summary
-  - event.quote
   - event.updates
-  - event.image
-Show contrasting opinions on event page
 Clean up any html/css loose ends (Make it look nice and polished)
+Show navigation between Milly Dowler and NotW stories
 
 Trending
-  - show event summary
   - show article types
