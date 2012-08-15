@@ -12,6 +12,10 @@
           </a>
         </div>
         <div class="overview cf">
+          <article class="summary horizontal">
+            <h2>Summary</h2>
+            <p><%= AutoExcerpt.new(item.summary, :characters => 200, :strip_html => true, :allowed_tags => ['p']) %></p>
+          </article>
           <% for article in item.get_all_articles(2) %>
           <article class="article horizontal">
           <a href="/articles/<%= article.id %>">

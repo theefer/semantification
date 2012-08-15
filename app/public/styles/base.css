@@ -172,11 +172,11 @@ section.main-actors li {
   -webkit-transition-duration: 0.1s;
   -webkit-transition-delay: 0.2s;
   margin-left: -2000px;
-  width: 900px;
+  width: 1000px;
 }
 #trending .event:hover .overview {
   -webkit-transition-delay: 0s;
-  margin-left: -400px;
+  margin-left: -500px;
 }
 #trending a {
   color: inherit;
@@ -189,11 +189,14 @@ section.main-actors li {
   background-color: rgba(33, 33, 33, 0.95);
   padding: 10px;
 }
-.overview .article.horizontal {
+.overview .horizontal {
   float: left;
-  width: 380px;
+  width: 360px;
 }
-.overview .article.horizontal + .article.horizontal {
+.overview .summary.horizontal {
+  width: 220px;
+}
+.overview .horizontal + .horizontal {
   margin-left: 20px;
 }
 .overview .article.horizontal img {
