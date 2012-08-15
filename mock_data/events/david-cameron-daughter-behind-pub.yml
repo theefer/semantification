@@ -11,6 +11,8 @@
 :roles:
   - :type: major
     :actor: david-cameron
+    :description: >-
+      <p><strong>David Cameron</strong>, the bad father who forgot his child at the pub.
 
 # Editorial options to configure the events page
 :widgets:

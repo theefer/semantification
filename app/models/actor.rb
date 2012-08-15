@@ -1,6 +1,6 @@
 class Actor
 
-  attr_reader :id, :bio, :thumbnail, :image 
+  attr_reader :id, :bio, :thumbnail, :wide_thumbnail, :image
   include BackedByYaml
   set_mock_path "mock_data/actors"
 
@@ -9,6 +9,7 @@ class Actor
     @name = data[:name]
     @bio = data[:bio]
     @thumbnail = data[:thumbnail]
+    @wide_thumbnail = data[:wide_thumbnail]
     @image = data[:image]
     # more stuff
   end

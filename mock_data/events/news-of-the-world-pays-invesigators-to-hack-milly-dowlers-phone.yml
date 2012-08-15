@@ -13,5 +13,12 @@
   blah here blah blah here blah blah here blah blah.
   And some more.
 :roles:
-  - :type: witness
-    :actor: rupert-murdoch
+  - :type: victim
+    :actor: milly-dowler
+    :description: >-
+      <p><strong>Milly Dowler</strong>, the murder victim whose voicemail was hacked.</p>
+  - :type: secondary
+    :actor: news-of-the-world
+    :description: >-
+      <p><strong>News Corporation</strong>, the world's second-largest media conglomerate, which is currently in a takeover bid for BSkyB.</p>
+:hero_image: milly.jpg

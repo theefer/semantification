@@ -1,5 +1,6 @@
 class Event
   attr_reader :id, :title, :synopsis, :summary, :background, :widgets, :date, :when
+  attr_reader :hero_image, :quote
 
   include BackedByYaml
   set_mock_path "mock_data/events"
@@ -14,14 +15,16 @@ class Event
     @location_id = data[:location]
     @widgets = data[:widgets] || []
     @main_story_id = data[:main_story]
-    @roles_ids = data[:roles]
+    @roles_ids = data[:roles] || []
     @when = data[:when]
+    @hero_image = data[:hero_image]
+    @quote = data[:quote]
   end
 
   def roles
     @roles ||= @roles_ids.map do |role|
       actor = Actor.get_by_id(role[:actor])
-      Role.new(role[:type], actor)
+      Role.new(role[:type], actor, role[:description])
     end
   end
 

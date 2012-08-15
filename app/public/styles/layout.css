@@ -83,7 +83,7 @@ img#hero {
     width: 36%;
     right: 0;
     margin-top: -200px;
-    opacity: 0.8;
+    opacity: 0.2;
 }
 
 /* background */
@@ -113,6 +113,8 @@ aside#characters img {
     clear: both;
     padding-top: 7px;
     border-top: 1px solid #999;
+    float: left;
+    width: 100%;
 }
 
 /* box */

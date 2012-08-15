@@ -8,11 +8,15 @@
 
 <h1><%= event.title %></h1>
 
+<!--
 <p class="when">
-    <b>When</b>: <%= event.when %> <!-- --> 
+    <b>When</b>: <%= event.when %>
 </p>
+-->
 
-<img src="/images/milly.jpg" id="hero"/>
+<% if event.hero_image %>
+<img src="/images/<%= event.hero_image %>" id="hero"/>
+<% end %>
 
 <aside id="background">
     <h2>Summary</h2>

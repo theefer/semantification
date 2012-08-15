@@ -3,11 +3,29 @@
 :main_story: news-corporation-bid-for-bskyb
 :synopsis: >-
   It was revealed that the business secretary told two undercover reporters he had "declared war" on Rupert Murdoch and said: "I think we are going to win."
-:summary:
+:summary: >-
+  <p>Daily Telegraph reporters plunges coalition into crisis, as they revealed Vince Cable's unguarded comments. Vince Cable's career was hanging in the balance today after it was revealed that the business secretary told two undercover reporters he had "declared war" on Rupert Murdoch.</p>
+  <p>The remarks appeared to prejudge the outcome of Ofcom's investigation into whether the bid should be investigated on media plurality grounds, which was ordered by Cable.</p>
+  <p>Ofcom is due to report by the end of the year.</p>
 :background: >-
   Some text here blah blah here blah blah here blah blah here blah
   blah here blah blah here blah blah here blah blah.
   And some more.
 :roles:
-  - :type: witness
+  - :type: main
+    :actor: vince-cable
+    :description: >-
+      <p><strong>Vince Cable</strong> who referred the takeover bid to Ofcom to consider issues of media plurality.</p>
+  - :type: main
     :actor: rupert-murdoch
+    :description: >-
+      <p><strong>Rupert Murdoch</strong> who is the founder, Chairman and CEO of global media holding company the News Corporation.</p>
+  - :type: secondary
+    :actor: news-of-the-world
+    :description: >-
+      <p><strong>News Corporation</strong>, the world's second-largest media conglomerate, which is currently in a takeover bid for BSkyB.</p>
+:hero_image: vince-cable-006.jpg
+:quote:
+  :text: >-
+    <p>I deeply regret the comments I made and apologise for the embarrassment that I have caused the government.</p>
+  :author: Vince Cable
