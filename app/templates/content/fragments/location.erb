@@ -9,6 +9,6 @@
     // TODO: highlight location, allow multiple maps
     var el = document.getElementById("map_canvas");
     window.onload = function() {
-        initMaps(el, <%= event.location.lat %>, <%= event.location.long %>)
+        initMaps(el, <%= event.location.lat %>, <%= event.location.long %>, <%= event.location.zoom %>)
     };
 </script>

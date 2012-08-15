@@ -1,9 +1,15 @@
 :title: Mont Blanc avalanche
 :date: 2012-07-12T16:23:33
+:location: mont-blanc
 :synopsis: >-
   Nine dead, including three Britons, after an avalanche in the French Alps.
-:summary:
+:summary: >-
+  <p>On Thursday, 12th July, an avalanche claimed the lives of nine climbers, including three Britons, on one of the satellite peaks of Mont Blanc.</p>
 :background: >-
   Some text here blah blah here blah blah here blah blah here blah
   blah here blah blah here blah blah here blah blah.
   And some more.
+
+# Editorial options to configure the events page
+:widgets:
+  - map

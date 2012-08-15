@@ -1,6 +1,6 @@
-function initMaps(el, lat, lon) {
+function initMaps(el, lat, lon, zoom) {
   var mapOptions = {
-    zoom: 14,
+    zoom: zoom,
     center: new google.maps.LatLng(lat, lon),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
