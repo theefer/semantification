@@ -75,9 +75,14 @@ set :public_folder, 'app/public'
 set :protection, :except => :json_csrf
 
 get '/' do
-  # Hacky index of all articles on the root page
+  # Index page with links to content
+  all_events = Event.filter({})
   all_articles = Article.filter({})
-  "<ul>" + all_articles.map {|a| "<li><a href=\"/articles/#{a.id}\">#{a.title}</a></li>"}.join + "</ul>"
+
+  # TODO: yeah, quite ad-hoc, I know
+  file = File.read("app/templates/index.erb")
+  template = Erubis::Eruby.new(file)
+  template.result({:events => all_events, :articles => all_articles})
 end
 
 

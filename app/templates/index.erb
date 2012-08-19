@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Semantic News &mdash; Guardian Discovery Week Project</title>
+</head>
+<body>
+
+<h1>Semantic News</h1>
+
+<h2>Business goals</h2>
+
+<dl>
+  <dt>Reputation as the site of reference for online news reporting</dt>
+  <dd>
+    <p>By evolving towards an innovative and progressive (digital first) approach to news content, the site will acquire the same reputation of relevance and clarity for news events as the BBC has for rapidity of breaking news. The reader's understanding of news event should be improved by exposing the context of the stories, distinguishing facts from comments and structuring updates and related articles in a more logical way.</p>
+    <p>Measurable objective: increase in the number of unique readers, more and more frequent visits by individual readers, increase in the number of links pointing to the site (distinct referers).</p>
+  </dd>
+  <dt>Longer user journeys</dt>
+  <dd>
+    <p>By providing more relevant suggestions of related material, as well as in-page links to reveal and browse context (actors, events, locations, etc.), the readers will be incentivised to access more content (Wikipedia-effect).</p>
+    <p>Measurable objective: individual readers spend more time and visit more pages on the site.</p>
+  </dd>
+  <dt>Richer profiling of readers</dt>
+  <dd>
+    <p>As readers interact with a better domain model (read article, browse related events, explore actors, etc.), we can build a much more granular profile of their interests (e.g. actors, events, type of articles). This knowledge will be key for upcoming personalisation features such as recommendations, notifications, targetted advertisement, etc.</p>
+    <p>Measurable objective: building of knowledge models about readers which matches our understanding of our audience, development of features based on user profiles.</p>
+  </dd>
+  <dt>More fine-grained knowledge about our content</dt>
+  <dd>
+    <p>By annotating all content in a more structured way, it is possible to be extremely precise in attaching contextual content, unlike a simpler section/tag-based approach. This can be exploited for better ad targetting, e.g. by showing ads on all pages referencing an event or a popular person.</p>
+    <p>Measurable objective: improvement of the clickthrough rate of ads, advertisement or sponsorship deals made on the basis of more precise targetting.</p>
+  </dd>
+  <dt>Improve online referencing</dt>
+  <dd>
+    <p>By focusing on rich event and story pages rather than series of singular articles about these events (and a poorly curated tag page), a single always up-to-date URL can be promoted for any event, with links to articles to provide more depth. This approach should greatly improve the site's SEO.</p>
+    <p>Measurable objective: improvement of the ranking on top search engines for queries about news events, increase in the number of visitors coming from search engines.</p>
+  </dd>
+</dl>
+
+
+<h2>Technical considerations</h2>
+
+<p>A number of future features under discussion would either benefit from or require a more semantic rework of our news model:</p>
+
+<ul>
+  <li>Improved SEO</li>
+  <li>Improved search</li>
+  <li>Improved "Tag page"</li>
+  <li>Improved tagging</li>
+  <li>Liveblogs and flexible content</li>
+  <li>Notifications (following live events)</li>
+  <li>Recommendations</li>
+  <li>Personalisation</li>
+  <li>Trending events</li>
+</ul>
+
+<p>Other aspects to explore in further details:</p>
+
+<ul>
+  <li>Editor tools for entering and managing the information.</li>
+  <li>Impact on mobile and tablet interfaces.</li>
+</ul>
+
+
+<h2>Browse events</h2>
+
+<ul>
+  <% for event in events %>
+  <li><a href="/events/<%= event.id %>\"><%= event.title %></a></li>
+  <% end %>
+</ul>
+
+<h2>Browse articles</h2>
+
+<ul>
+  <% for article in articles %>
+  <li><a href="/articles/<%= article.id %>\"><%= article.title %></a></li>
+  <% end %>
+</ul>
+
+
+<h2>Development team</h2>
+
+<ul>
+  <li>Francis Carr</li>
+  <li>Sébastien Cevey</li>
+  <li>Matt Chadburn</li>
+  <li>Annabel Church</li>
+  <li>Lindsey Dew</li>
+</ul>
