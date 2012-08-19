@@ -30,8 +30,13 @@ If you want it to auto-reload your app when files change, use Shotgun:
 
   http://stackoverflow.com/questions/1247125/how-to-get-sinatra-to-auto-reload-the-file-after-each-change
 
+# Deploy to Heroku
 
-# Deploy
+Deploy to heroku by following this tutorial:
+
+  https://devcenter.heroku.com/articles/ruby
+
+# OBSOLETE - Deploy to EC2
 
 Update to latest version from Git:
 
