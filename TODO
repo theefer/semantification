@@ -1,12 +1,18 @@
--- TODO List (In no particular order) --
+-- TODO List (most important first) --
 
-Show contrasting opinions on event page
-In-article-page references, expandable
-Implement a simple story page (?)
 More mock data:
   - event.when
   - event.updates
-Clean up any html/css loose ends (Make it look nice and polished)
+  - stories
+
+Summarize project goals (incentive, KPIs, related projects, etc.)
+
+Implement a simple story page
+Clean up any html/css loose ends (make it look nice and polished)
+In-article-page references, expandable
+Show UI for live event vs retrospective event
+
+Show contrasting opinions on event page
 Show navigation between Milly Dowler and NotW stories
 
 Trending
