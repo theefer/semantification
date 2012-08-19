@@ -1,12 +1,11 @@
-
 require 'rubygems'
+require 'bundler'
 
-require 'sinatra'
-require 'erubis'
-require 'yaml'
-require 'json'
-require 'time-ago-in-words'
-require 'auto_excerpt'
+# dependencies from Gemfile
+Bundler.require
+
+# inject current directory into load path
+$LOAD_PATH.unshift(File.dirname(__FILE__))
 
 # libs 
 
