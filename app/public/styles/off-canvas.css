@@ -6,6 +6,7 @@
         width: 98%;
         padding: 7px;
         min-height: 200px;
+        opacity: 0.2;
     }
 
 [role="background"] {   
@@ -23,10 +24,15 @@
  float: left;        
 }
 
+.event [role="event"] {
+ opacity: 1;
+}
+
 /* background left */
 .background [role="background"] {   
  margin-left: 0; 
  width: 95%;
+ opacity: 1;
 }
 .background [role="event"]{
  margin-right: -100%;
@@ -47,5 +53,6 @@
 .depth [role="depth"] {    
     margin-left: 0;
     width: 80%;;
+    opacity: 1;
 }
 
