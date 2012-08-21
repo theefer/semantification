@@ -8,7 +8,7 @@ class TrendingService
     all_articles = [
       Article.get_by_id('death-in-the-alps-in-the-high-places'),
       Article.get_by_id('david-cameron-daughter-pub-normal-sun'),
-      Article.get_by_id('rebekah-brooks-milly-dowler-phone-hacking')
+      Article.get_by_id('rebekah-brooks-its-inconceivable-i-knew-of-milly-dowler-phone-hacking')
     ]
     filtered_articles = all_articles.reject {|a| a.id == not_this_article.id}
     filtered_articles = filtered_articles.take(limit) if limit
