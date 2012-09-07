@@ -129,62 +129,73 @@
   </div>
 </div>
 
-<div id="reaction">
-    <h2>Opinions</h2>
-<style>
-  .option {
-    margin: 7px 0 7px 0 !important;
-    padding: 7px 0 7px 0;
-    margin-left: 0 ; 
-    position: relative;
-    text-justify: inter-word;
-    width: 40%;
-  }
+<% opinion_articles = event.get_articles_by_type("opinion") %>
+<% opinion_articles.push(opinion_articles[0]) %>
+<% opinion_articles.push(opinion_articles[0]) %>
 
-  .mod {
-    font-size: 15px;
-    padding-left: 5px;
-  }
+<% if opinion_articles.size > 0 %> 
+    <div id="reaction">
+        <h2>Opinions</h2>
+        <style>
+          .option {
+            margin: 7px 0 7px 0 !important;
+            padding: 7px 0 7px 0;
+            margin-left: 0 ; 
+            position: relative;
+            text-justify: inter-word;
+            width: 40%;
+          }
 
-  .vs {
-    text-align: center;
-  }
-</style>
+          .mod {
+            font-size: 15px;
+            padding-left: 5px;
+          }
 
-<% if event.get_articles_by_type("opinion").size == 2 %>
-    <% articles = event.get_articles_by_type("opinion") %>
-    <% article = articles[0] %>
-      <div class="option col-4">
-        <article class="article-thumb">
-          <img src="<%= article.main_image %>">
-          <div class="title"><%= article.main_image_caption %></div>
-        </article>
-      </div>
-      <blockquote class="mod">
-        <span class="bqsmall">“</span>
-        <span class="quote">
-            <%= article.quote %>
-        </span>
-        <span class="bqend">”</span>
-      </blockquote>
-      
-      <% article = articles[1] %>
-      <h2 class="vs col-10">VS</h2>
-      <blockquote class="mod col-7">
-        <span class="bqsmall">“</span>
-        <span class="quote">
-            <%= article.quote %>
-        </span>
-        <span class="bqend">”</span>
-      </blockquote>
-      <div class="option col-4">
-      <article class="article-thumb">
-        <img src="<%= article.main_image %>">
-        <div class="title"><%= article.main_image_caption %></div>
-      </article>
-      </div>
+          .vs {
+            text-align: center;
+          }
+        </style>
+            <% for article in opinion_articles %>
+              <% if opinion_articles.index(article).even? %>
+              <article>
+                  <div class="option col-4">
+                    <article class="article-thumb">
+                      <img src="<%= article.main_image %>">
+                      <div class="title"><%= article.main_image_caption %></div>
+                    </article>
+                  </div>
+                  <blockquote class="mod">
+                    <span class="bqsmall">“</span>
+                    <span class="quote">
+                        <%= article.quote %>
+                    </span>
+                    <span class="bqend">”</span>
+                  </blockquote>
+              </article>
+                  <% if opinion_articles.size == 2 && opinion_articles.index(article) == 0 %>
+                    <h2 class="vs col-10">VS</h2>
+                  <% end %>
+                <% else %>
+                <article>
+                  <blockquote class="mod col-7">
+                    <span class="bqsmall">“</span>
+                    <span class="quote">
+                        <%= article.quote %>
+                    </span>
+                    <span class="bqend">”</span>
+                  </blockquote>
+                  <div class="option col-4">
+                  <article class="article-thumb">
+                    <img src="<%= article.main_image %>">
+                    <div class="title"><%= article.main_image_caption %></div>
+                  </article>
+                  </div>
+                </article>
+              <% end %>
+              
+        <% end %>
+    </div>
 <% end %>
-</div>
 
 <% if all_articles.size > 0 %>
 <div class="below-guilt">
