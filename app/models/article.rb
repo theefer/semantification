@@ -1,5 +1,6 @@
 class Article
   attr_reader :id, :title, :author, :body, :published_date, :main_image, :main_image_caption
+  attr_reader :quote
 
   include BackedByYaml
   set_mock_path "mock_data/articles"
@@ -17,6 +18,7 @@ class Article
     @key_references = data[:key_references] || []
 
     @main_event_id = data[:main_event]
+    @quote = data[:quote]
   end
 
   def main_event

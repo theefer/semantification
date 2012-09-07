@@ -129,6 +129,63 @@
   </div>
 </div>
 
+<div id="reaction">
+    <h2>Opinions</h2>
+<style>
+  .option {
+    margin: 7px 0 7px 0 !important;
+    padding: 7px 0 7px 0;
+    margin-left: 0 ; 
+    position: relative;
+    text-justify: inter-word;
+    width: 40%;
+  }
+
+  .mod {
+    font-size: 15px;
+    padding-left: 5px;
+  }
+
+  .vs {
+    text-align: center;
+  }
+</style>
+
+<% if event.get_articles_by_type("opinion").size == 2 %>
+    <% articles = event.get_articles_by_type("opinion") %>
+    <% article = articles[0] %>
+      <div class="option col-4">
+        <article class="article-thumb">
+          <img src="<%= article.main_image %>">
+          <div class="title"><%= article.main_image_caption %></div>
+        </article>
+      </div>
+      <blockquote class="mod">
+        <span class="bqsmall">“</span>
+        <span class="quote">
+            <%= article.quote %>
+        </span>
+        <span class="bqend">”</span>
+      </blockquote>
+      
+      <% article = articles[1] %>
+      <h2 class="vs col-10">VS</h2>
+      <blockquote class="mod col-7">
+        <span class="bqsmall">“</span>
+        <span class="quote">
+            <%= article.quote %>
+        </span>
+        <span class="bqend">”</span>
+      </blockquote>
+      <div class="option col-4">
+      <article class="article-thumb">
+        <img src="<%= article.main_image %>">
+        <div class="title"><%= article.main_image_caption %></div>
+      </article>
+      </div>
+<% end %>
+</div>
+
 <% if all_articles.size > 0 %>
 <div class="below-guilt">
   <h2>In depth</h2>
