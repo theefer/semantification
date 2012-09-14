@@ -109,7 +109,8 @@
                   <div class="option col-4">
                     <section class="article-thumb">
                       <img src="<%= article.main_image %>">
-                      <div class="title"><%= article.main_image_caption %></div>
+                      <div class="title"><a href="/articles/<%= article.id %>">
+<%= article.main_image_caption %></a></div>
                     </section>
                   </div>
                   <blockquote class="mod">
@@ -135,7 +136,8 @@
                   <div class="option col-4">
                       <section class="article-thumb">
                         <img src="<%= article.main_image %>">
-                        <div class="title"><%= article.main_image_caption %></div>
+                        <div class="title"><a href="/articles/<%= article.id %>">
+<%= article.main_image_caption %></a></div>
                       </section>
                   </div>
                 </article>
