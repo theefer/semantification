@@ -79,59 +79,7 @@
 </aside>
 <% end %>
 
-<div id="reaction">
-    <h2>Opinions</h2>
-<style>
-  .option {
-    margin: 7px 0 7px 0 !important;
-    padding: 7px 0 7px 0;
-    margin-left: 0 ; 
-    position: relative;
-    text-justify: inter-word;
-    width: 40%;
-  }
-
-  .mod {
-    font-size: 15px;
-    padding-left: 5px;
-  }
-
-  .vs {
-    text-align: center;
-  }
-</style>
-  <div class="option col-4">
-    <article class="article-thumb">
-      <img src="http://static.guim.co.uk/sys-images/Media/Columnists/Columnists/2011/7/6/1309964190031/Rupert-Murdoch-007.jpg">
-      <div class="title">Tory MPs should be roaring on the airwaves against this bugging of Lib Dem colleagues</div>
-    </article>
-  </div>
-  <blockquote class="mod">
-    <span class="bqsmall">“</span>
-    <span class="quote">
-        Ed Miliband has been silly, but he's only a lad. Lib Dems have been worse, but they are Lib Dems after all. It's Tories we look to to defend constitutional proprieties against the mob
-    </span>
-    <span class="bqend">”</span>
-    </blockquote>
-    <h2 class="vs col-10">VS</h2>
-    <blockquote class="mod col-7">
-    <span class="bqsmall">“</span>
-    <span class="quote">
-        Taking the Murdoch decision away from Vince Cable stopped this story in its tracks – but made it a poisoned chalice
-    </span>
-    <span class="bqend">”</span>
-    </blockquote>
-     <div class="option col-4">
-    <article class="article-thumb">
-      <img src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2010/12/21/1292959920209/Vince-Cable-007.jpg">
-      <div class="title">It was wrong to strip Vince Cable of the BSkyB decision</div>
-    </article>
-  </div>
-</div>
-
 <% opinion_articles = event.get_articles_by_type("opinion") %>
-<% opinion_articles.push(opinion_articles[0]) %>
-<% opinion_articles.push(opinion_articles[0]) %>
 
 <% if opinion_articles.size > 0 %> 
     <div id="reaction">
@@ -157,12 +105,12 @@
         </style>
             <% for article in opinion_articles %>
               <% if opinion_articles.index(article).even? %>
-              <article>
+                <article class="col-11">
                   <div class="option col-4">
-                    <article class="article-thumb">
+                    <section class="article-thumb">
                       <img src="<%= article.main_image %>">
                       <div class="title"><%= article.main_image_caption %></div>
-                    </article>
+                    </section>
                   </div>
                   <blockquote class="mod">
                     <span class="bqsmall">“</span>
@@ -171,12 +119,12 @@
                     </span>
                     <span class="bqend">”</span>
                   </blockquote>
-              </article>
-                  <% if opinion_articles.size == 2 && opinion_articles.index(article) == 0 %>
-                    <h2 class="vs col-10">VS</h2>
-                  <% end %>
+                </article>
+                <% if opinion_articles.size == 2 && opinion_articles.index(article) == 0 %>
+                  <h2 class="vs col-10">VS</h2>
+                <% end %>
                 <% else %>
-                <article>
+                <article class="col-11">
                   <blockquote class="mod col-7">
                     <span class="bqsmall">“</span>
                     <span class="quote">
@@ -185,14 +133,13 @@
                     <span class="bqend">”</span>
                   </blockquote>
                   <div class="option col-4">
-                  <article class="article-thumb">
-                    <img src="<%= article.main_image %>">
-                    <div class="title"><%= article.main_image_caption %></div>
-                  </article>
+                      <section class="article-thumb">
+                        <img src="<%= article.main_image %>">
+                        <div class="title"><%= article.main_image_caption %></div>
+                      </section>
                   </div>
                 </article>
               <% end %>
-              
         <% end %>
     </div>
 <% end %>
