@@ -1,6 +1,6 @@
 class Event
   attr_reader :id, :title, :synopsis, :summary, :background, :widgets, :date, :when
-  attr_reader :hero_image, :quote
+  attr_reader :hero_image, :quote, :live
 
   include BackedByYaml
   set_mock_path "mock_data/events"
@@ -19,6 +19,7 @@ class Event
     @when = data[:when]
     @hero_image = data[:hero_image]
     @quote = data[:quote]
+    @live = data[:live]
   end
 
   def roles
@@ -37,6 +38,7 @@ class Event
   end
 
   def is_live? # or active?
+    @live
   end
 
   def is_latest_event_in_story?
